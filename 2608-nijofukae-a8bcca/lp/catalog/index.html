@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<base href="https://fb-home.jp/">
+<meta name="robots" content="noindex,nofollow,noarchive">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資料請求（無料） | FB HOME 福岡の分譲住宅</title>
+    <meta name="description" content="二丈上深江の販売図面とCALIFORNIA STYLE施工実例集を無料でお届け。ご入力は30秒、その場でメールが届きます。">
+    <meta name="robots" content="noindex">
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family:'Noto Sans JP', sans-serif;
+            background:#F0F7F9; color:#2C4A55; line-height:1.8;
+            -webkit-text-size-adjust:100%;
+        }
+        img { max-width:100%; display:block; }
+
+        /* ===== ヘッダー ===== */
+        .ct-header { background:#fff; padding:14px 20px; border-bottom:1px solid #DCE9ED; }
+        .ct-header-in {
+            max-width:1000px; margin:0 auto;
+            display:flex; align-items:center; justify-content:space-between; gap:12px;
+        }
+        .ct-header .logo {
+            font-family:'Montserrat',sans-serif; font-weight:800;
+            font-size:1rem; letter-spacing:.08em; color:#2C4A55; text-decoration:none;
+        }
+        .ct-header .tel { font-size:.74rem; color:#6E93A0; text-decoration:none; white-space:nowrap; }
+
+        /* ===== ヒーロー（実写の外観夜景） ===== */
+        .ct-hero { position:relative; overflow:hidden; }
+        .ct-hero-bg { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+        .ct-hero-scrim {
+            position:absolute; inset:0;
+            background:linear-gradient(180deg, rgba(20,36,46,.62) 0%, rgba(20,36,46,.74) 100%);
+        }
+        .ct-hero-in {
+            position:relative; max-width:1000px; margin:0 auto;
+            padding:52px 20px 56px; text-align:center; color:#fff;
+        }
+        .ct-badge {
+            display:inline-block; background:#FFD45E; color:#2C4A55;
+            font-size:.7rem; font-weight:700; letter-spacing:.08em;
+            padding:5px 15px; border-radius:100px; margin-bottom:16px;
+        }
+        .ct-hero h1 {
+            /* 助詞が行頭に落ちないよう <br> で改行位置を固定している */
+            font-size:clamp(1.28rem, 5.4vw, 2rem);
+            font-weight:900; line-height:1.5; margin-bottom:14px;
+            text-shadow:0 2px 18px rgba(0,0,0,.4);
+        }
+        .ct-hero h1 .ac { color:#FFD45E; }
+        .ct-hero .lead { font-size:.86rem; color:#DCEAF0; }
+
+        /* ===== 書影（何がもらえるか＝ここが本体） ===== */
+        .ct-books-wrap { position:relative; margin-top:26px; }
+        .ct-books {
+            display:flex; justify-content:center; align-items:flex-end;
+            gap:18px; max-width:520px; margin:0 auto;
+        }
+        .ct-book { flex:1 1 0; min-width:0; }
+        .ct-book img {
+            width:100%; border-radius:4px;
+            box-shadow:0 18px 44px rgba(0,0,0,.42);
+            border:1px solid rgba(255,255,255,.16);
+        }
+        .ct-book .cap {
+            margin-top:10px; font-size:.7rem; font-weight:700;
+            color:#fff; line-height:1.5; text-align:center;
+        }
+        .ct-book .cap span { display:block; font-size:.64rem; font-weight:400; color:#B9D2DC; margin-top:2px; }
+
+        /* ===== 中身の抜粋 ===== */
+        .ct-peek { padding:44px 20px 8px; }
+        .ct-peek-in { max-width:1000px; margin:0 auto; }
+        .ct-h2 {
+            font-size:1.02rem; font-weight:700; text-align:center; margin-bottom:6px;
+        }
+        .ct-h2-sub { font-size:.74rem; color:#6E93A0; text-align:center; margin-bottom:22px; }
+        .ct-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; }
+        .ct-cell { position:relative; border-radius:6px; overflow:hidden; aspect-ratio:16/10; }
+        .ct-cell img { width:100%; height:100%; object-fit:cover; }
+        .ct-cell .lb {
+            position:absolute; left:0; right:0; bottom:0;
+            padding:16px 10px 7px; font-size:.68rem; font-weight:700; color:#fff;
+            background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.72) 100%);
+        }
+
+        /* ===== 画像ズーム（ライトボックス） ===== */
+        .ct-book img, .ct-cell img { cursor:zoom-in; }
+        .ct-zoom-hint {
+            position:absolute; top:8px; right:8px; z-index:3;
+            width:30px; height:30px; border-radius:50%;
+            background:rgba(0,0,0,.48); color:#fff;
+            display:flex; align-items:center; justify-content:center;
+            font-size:14px; pointer-events:none;
+        }
+        .ct-lb {
+            position:fixed; inset:0; z-index:9999;
+            background:rgba(0,0,0,.92);
+            display:none; align-items:center; justify-content:center; padding:18px;
+            -webkit-tap-highlight-color:transparent;
+        }
+        .ct-lb.open { display:flex; }
+        .ct-lb img {
+            max-width:100%; max-height:88vh; object-fit:contain;
+            border-radius:6px; box-shadow:0 12px 44px rgba(0,0,0,.5);
+        }
+        .ct-lb-close {
+            position:absolute; top:12px; right:14px;
+            width:46px; height:46px; border-radius:50%;
+            background:rgba(255,255,255,.16); color:#fff;
+            border:none; font-size:26px; line-height:1; cursor:pointer;
+        }
+        .ct-lb-cap {
+            position:absolute; bottom:16px; left:0; right:0;
+            text-align:center; color:#fff; font-size:.78rem; padding:0 16px;
+        }
+
+        /* ===== フォーム ===== */
+        .ct-form-wrap { padding:34px 20px 64px; }
+        .ct-form-in {
+            max-width:640px; margin:0 auto;
+            background:#fff; border-radius:8px; padding:34px 34px 40px;
+        }
+        .ct-form-in > h2 { font-size:1.06rem; font-weight:700; text-align:center; margin-bottom:6px; }
+        .ct-form-in > .sub { font-size:.76rem; color:#6E93A0; text-align:center; margin-bottom:26px; }
+        .fg { margin-bottom:18px; }
+        .fg label { display:block; font-size:.8rem; font-weight:600; margin-bottom:6px; }
+        .fg label .req { color:#D2603A; font-size:.72rem; margin-left:4px; }
+        .fg input, .fg select {
+            width:100%; padding:13px 14px;
+            border:1px solid #DCE9ED; border-radius:5px;
+            font-size:16px; /* 16px未満だとiOSで入力時に自動ズームする。下げないこと */
+            font-family:inherit; color:#2C4A55; background:#fff;
+        }
+        .fg input:focus, .fg select:focus { outline:none; border-color:#8AABB5; }
+        .fg .hint { font-size:.7rem; color:#8AABB5; margin-top:5px; }
+        .fc { display:flex; align-items:flex-start; gap:9px; margin:22px 0 20px; }
+        .fc input { margin-top:5px; flex-shrink:0; width:16px; height:16px; }
+        .fc label { font-size:.76rem; line-height:1.6; }
+        .fc a { color:#4A7C8C; }
+        .ct-submit {
+            width:100%; padding:18px; border:none; border-radius:6px;
+            background:#D2603A; color:#fff;
+            font-family:inherit; font-size:.98rem; font-weight:700; letter-spacing:.04em;
+            cursor:pointer; transition:opacity .2s;
+        }
+        .ct-submit:hover { opacity:.9; }
+        .ct-submit:disabled { opacity:.5; cursor:default; }
+        .ct-note { font-size:.7rem; color:#8AABB5; text-align:center; margin-top:12px; line-height:1.7; }
+        #ct-result {
+            display:none; margin-top:18px; padding:16px 18px;
+            border-radius:6px; font-size:.84rem; text-align:center; line-height:1.7;
+        }
+        #ct-result.ok { background:#EAF6EE; color:#2F6B45; }
+        #ct-result.ng { background:#FCEDEA; color:#A8412A; }
+
+        .ct-footer { background:#2C4A55; color:#C9DDE4; padding:28px 20px; text-align:center; font-size:.72rem; }
+        .ct-footer a { color:#C9DDE4; }
+
+        @media (max-width:767px) {
+            .ct-hero-in { padding:38px 16px 42px; }
+            .ct-books { gap:12px; max-width:340px; }
+            .ct-peek { padding:32px 16px 4px; }
+            .ct-grid { grid-template-columns:repeat(2, 1fr); }
+            .ct-form-wrap { padding:26px 16px 48px; }
+            .ct-form-in { padding:26px 18px 32px; border-radius:6px; }
+        }
+        @media (max-width:400px) {
+            /* 360px級で3列は潰れるため2列を維持。書影は2冊並びを死守（ここが訴求の核） */
+            .ct-books { gap:9px; }
+            .ct-book .cap { font-size:.62rem; }
+        }
+    </style>
+<style>
+ .ct-books{justify-content:center!important}
+ .ct-book{max-width:230px}
+</style>
+</head>
+<body>
+
+
+
+
+<header class="ct-header">
+    <div class="ct-header-in">
+        <a class="logo" href="https://fb-home.jp/">FB HOME</a>
+        <a class="tel" href="tel:0927101180">TEL 092-710-1180</a>
+    </div>
+</header>
+
+<section class="ct-hero">
+    <img class="ct-hero-bg" src="https://fb-home.jp/wp-content/uploads/2026/07/cat-hero-exterior.jpg" alt="">
+    <div class="ct-hero-scrim"></div>
+    <div class="ct-hero-in">
+        <div class="ct-badge">無料プレゼント</div>
+        <h1>暮らしが、まるごとわかる。<br><span class="ac">CALIFORNIA STYLE 施工実例集</span>を無料でお届け</h1>
+        <p class="lead">ご入力は30秒。ご登録のメールアドレスへ、その場でお送りします。</p>
+
+        <div class="ct-books-wrap">
+            <div class="ct-books">
+                
+                <div class="ct-book">
+                    <img src="https://fb-home.jp/wp-content/uploads/2026/07/cat-book-jitsurei.jpg" alt="CALIFORNIA STYLE 施工実例集">
+                    <div class="cap">CALIFORNIA STYLE 施工実例集<span>外観・内装の実例写真集（全16ページ）</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ct-peek">
+    <div class="ct-peek-in">
+        <h2 class="ct-h2">資料の中身を少しだけ</h2>
+        <p class="ct-h2-sub">CALIFORNIA STYLE 施工実例集より</p>
+        <div class="ct-grid">
+                        <div class="ct-cell">
+                <img src="https://fb-home.jp/wp-content/uploads/2026/07/cat-living-dining.jpg" alt="リビングダイニング" loading="lazy">
+                <div class="lb">リビングダイニング</div>
+            </div>
+                        <div class="ct-cell">
+                <img src="https://fb-home.jp/wp-content/uploads/2026/07/cat-loft.jpg" alt="吹き抜けリビング" loading="lazy">
+                <div class="lb">吹き抜けリビング</div>
+            </div>
+                        <div class="ct-cell">
+                <img src="https://fb-home.jp/wp-content/uploads/2026/07/cat-dining.jpg" alt="ダイニング" loading="lazy">
+                <div class="lb">ダイニング</div>
+            </div>
+                        <div class="ct-cell">
+                <img src="https://fb-home.jp/wp-content/uploads/2026/07/cat-bedroom.jpg" alt="ベッドルーム" loading="lazy">
+                <div class="lb">ベッドルーム</div>
+            </div>
+                        <div class="ct-cell">
+                <img src="https://fb-home.jp/wp-content/uploads/2026/07/cat-porch.jpg" alt="ポーチ・デッキ" loading="lazy">
+                <div class="lb">ポーチ・デッキ</div>
+            </div>
+                        <div class="ct-cell">
+                <img src="https://fb-home.jp/wp-content/uploads/2026/07/cat-entrance.jpg" alt="エントランス" loading="lazy">
+                <div class="lb">エントランス</div>
+            </div>
+                    </div>
+    </div>
+</section>
+
+<section class="ct-form-wrap">
+    <div class="ct-form-in">
+        <h2>資料請求フォーム</h2>
+        <p class="sub">ご入力いただいた内容は、資料のお届けとご連絡にのみ使用いたします。</p>
+
+        <form id="ct-form" novalidate>
+            <div class="fg">
+                <label for="ct-name">お名前<span class="req">必須</span></label>
+                <input type="text" id="ct-name" name="name" placeholder="例）山田 花子" autocomplete="name" required>
+            </div>
+
+            <div class="fg">
+                <label for="ct-email">メールアドレス<span class="req">必須</span></label>
+                <input type="email" id="ct-email" name="email" placeholder="例）example@email.com" autocomplete="email" inputmode="email" required>
+                <div class="hint">こちらのアドレスへ資料をお送りします。</div>
+            </div>
+
+            <div class="fg">
+                <label for="ct-phone">電話番号</label>
+                <input type="tel" id="ct-phone" name="phone" placeholder="例）09012345678" autocomplete="tel" inputmode="tel">
+                <div class="hint">任意です。ご記入いただかなくても資料は届きます。</div>
+            </div>
+
+            <div class="fg">
+                <label for="ct-timing">ご検討の時期<span class="req">必須</span></label>
+                <select id="ct-timing" name="timing" required>
+                    <option value="">選択してください</option>
+                    <option value="3ヶ月以内">3ヶ月以内</option>
+                    <option value="半年以内">半年以内</option>
+                    <option value="1年以内">1年以内</option>
+                    <option value="1年より先・未定">1年より先・未定</option>
+                    <option value="情報収集中">まずは情報収集から</option>
+                </select>
+            </div>
+
+            <div class="fc">
+                <input type="checkbox" id="ct-agree" required>
+                <label for="ct-agree">
+                                            <a href="https://fb-home.jp/privacy-policy/" target="_blank" rel="noopener">個人情報保護方針</a>に同意する
+                                    </label>
+            </div>
+
+            <button type="submit" class="ct-submit" id="ct-submit">資料を受け取る（無料）</button>
+            <p class="ct-note">送信後、ご登録のメールアドレスへ自動でお送りします。<br>迷惑メールフォルダに振り分けられる場合がございます。</p>
+
+            <div id="ct-result"></div>
+            <input type="hidden" id="ct-nonce" value="3693d4e2e2">
+        </form>
+    </div>
+</section>
+
+<footer class="ct-footer">
+    <p>福岡ビルド株式会社／FB HOME<br>
+    〒811-1211 福岡県那珂川市今光1丁目56番地　TEL 092-710-1180<br>
+    福岡県知事免許（4）第16710号</p>
+            <p style="margin-top:10px;"><a href="https://fb-home.jp/privacy-policy/">個人情報保護方針</a></p>
+    </footer>
+
+<script>
+(function () {
+    var form   = document.getElementById('ct-form');
+    var btn    = document.getElementById('ct-submit');
+    var result = document.getElementById('ct-result');
+
+    function show(cls, html) {
+        result.className = cls;
+        result.innerHTML = html;
+        result.style.display = 'block';
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var name   = document.getElementById('ct-name').value.trim();
+        var email  = document.getElementById('ct-email').value.trim();
+        var phone  = document.getElementById('ct-phone').value.trim();
+        var timing = document.getElementById('ct-timing').value;
+        var agree  = document.getElementById('ct-agree').checked;
+
+        if (!name || !email || !timing) { show('ng', '必須項目をご入力ください。'); return; }
+        if (!agree) { show('ng', '個人情報の取り扱いに同意のうえ、送信してください。'); return; }
+
+        btn.disabled = true;
+        btn.textContent = '送信中…';
+        result.style.display = 'none';
+
+        var body = new URLSearchParams();
+        body.append('action', 'fb_home_catalog');
+        body.append('nonce', document.getElementById('ct-nonce').value);
+        body.append('name', name);
+        body.append('email', email);
+        body.append('phone', phone);
+        body.append('timing', timing);
+
+        // どの広告経由のリードかを通知メールに載せるため、着地時のURLパラメータを拾う。
+        // Meta広告のリンク先に utm_* を付けておくこと（付けないと「（不明）」になる）。
+        var qs = new URLSearchParams(location.search);
+        body.append('utm_source',   qs.get('utm_source')   || '');
+        body.append('utm_medium',   qs.get('utm_medium')   || '');
+        body.append('utm_campaign', qs.get('utm_campaign') || '');
+        body.append('utm_content',  qs.get('utm_content')  || '');
+        body.append('fbclid',       qs.get('fbclid') ? 'あり' : '');
+
+        fetch('https://fb-home.jp/wp-admin/admin-ajax.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+            body: body.toString()
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+            if (res && res.success) {
+                form.querySelectorAll('.fg, .fc, .ct-note').forEach(function (el) { el.style.display = 'none'; });
+                btn.style.display = 'none';
+                show('ok', '<strong>資料をお送りしました。</strong><br>ご登録のメールアドレスをご確認ください。<br>数分経っても届かない場合は、迷惑メールフォルダをご確認ください。');
+
+                // GTM側でこのイベントをトリガーに Meta Pixel の Lead を発火させる
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ 'event': 'generate_lead', 'form_name': 'catalog_request', 'timing': timing });
+            } else {
+                btn.disabled = false;
+                btn.textContent = '資料を受け取る（無料）';
+                show('ng', (res && res.data ? res.data : '送信に失敗しました。') + '<br>お急ぎの場合は <a href="tel:0927101180">092-710-1180</a> までご連絡ください。');
+            }
+        })
+        .catch(function () {
+            btn.disabled = false;
+            btn.textContent = '資料を受け取る（無料）';
+            show('ng', '通信エラーが発生しました。<br>お手数ですが、時間をおいて再度お試しください。');
+        });
+    });
+})();
+</script>
+
+
+<div class="ct-lb" id="ct-lb" role="dialog" aria-modal="true" aria-label="拡大画像">
+    <button class="ct-lb-close" id="ct-lb-close" type="button" aria-label="閉じる">&times;</button>
+    <img id="ct-lb-img" src="" alt="">
+    <div class="ct-lb-cap" id="ct-lb-cap"></div>
+</div>
+<script>
+(function () {
+    var lb    = document.getElementById('ct-lb');
+    var lbImg = document.getElementById('ct-lb-img');
+    var lbCap = document.getElementById('ct-lb-cap');
+    if (!lb) return;
+
+    function open(src, cap) {
+        lbImg.src = src;
+        lbImg.alt = cap || '';
+        lbCap.textContent = cap || '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        lb.classList.remove('open');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('ct-lb-close').addEventListener('click', close);
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+    // 販売図面・施工実例集・部屋写真すべてをタップで拡大表示
+    var imgs = document.querySelectorAll('.ct-book img, .ct-cell img');
+    imgs.forEach(function (img) {
+        var p = img.parentNode;
+        if (getComputedStyle(p).position === 'static') { p.style.position = 'relative'; }
+        var hint = document.createElement('span');
+        hint.className = 'ct-zoom-hint';
+        hint.textContent = '🔍';
+        p.appendChild(hint);
+        img.addEventListener('click', function () { open(img.src, img.alt); });
+    });
+})();
+</script>
+<div id="__demo_bar" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#0d2137;color:#fff;
+ font:600 13px/1.5 'Hiragino Sans','Yu Gothic',sans-serif;padding:9px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+ <span style="background:#c8102e;padding:3px 9px;border-radius:4px;letter-spacing:.08em">DEMO</span>
+ <span>資料請求ページ 変更後のイメージ　<b style="font-weight:400;color:#9fc3e4">本番ではありません／計測タグは外してあります</b></span>
+ <a href="../" style="margin-left:auto;color:#9fc3e4;font-size:12px">← トップのデモに戻る</a>
+</div><style>body{padding-top:46px!important}</style>
+</body>
+</html>
