@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>福岡ビルド｜土地活用ページ 強化版（広告の受け皿）イメージ</title>
+<style>
+:root{
+  --bg:#f6f4f0; --panel:#fff; --ink:#1d2529; --muted:#5d6a72; --faint:#93a0a8;
+  --line:#e5e0d7; --red:#e60012; --red-soft:#fdecee; --amber:#f6ab00; --amber-soft:#fef5e0;
+  --good:#2f8f63; --good-soft:#e5f2ec;
+  --shadow:0 1px 2px rgba(29,37,41,.05),0 8px 24px rgba(29,37,41,.07);
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;line-height:1.75;
+  -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px 90px}
+header.top{background:#1d2529;color:#fff;padding:44px 0 38px;margin-bottom:34px}
+header.top .wrap{padding-bottom:0}
+.eyebrow{font-size:12px;letter-spacing:.14em;color:#f6ab00;font-weight:700;margin:0 0 10px}
+h1{font-size:clamp(22px,3.6vw,31px);line-height:1.4;margin:0 0 12px;font-weight:800;letter-spacing:.01em}
+header.top p{margin:0;color:#b7c2c9;font-size:14px}
+.mocknote{display:inline-block;margin-top:18px;background:rgba(230,0,18,.16);border:1px solid rgba(230,0,18,.5);
+  color:#ffb3ba;font-size:12px;font-weight:700;padding:7px 13px;border-radius:4px}
+h2{font-size:20px;margin:52px 0 6px;font-weight:800;letter-spacing:.01em;
+  border-left:5px solid var(--red);padding-left:12px}
+h2 .n{color:var(--faint);font-family:var(--mono);font-size:14px;margin-right:8px;font-weight:700}
+h2+.sub{margin:0 0 20px 17px;color:var(--muted);font-size:14px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:26px;box-shadow:var(--shadow)}
+.lead{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--red);
+  border-radius:6px;padding:22px 24px;box-shadow:var(--shadow)}
+.lead b{color:var(--red)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:0}
+th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:#faf8f5;font-weight:700;font-size:12.5px;color:var(--muted);white-space:nowrap}
+td.j{white-space:nowrap;font-weight:700}
+.ng{color:var(--red)}.ok{color:var(--good)}
+.tablewrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}
+.cards{display:grid;gap:18px;margin-top:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.card__head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.badge{background:var(--red);color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:3px;white-space:nowrap;margin-top:2px}
+.card__title{font-size:16.5px;font-weight:800;margin:0;flex:1;min-width:220px}
+.card__why{font-size:13.5px;color:var(--muted);margin:6px 0 0;width:100%}
+.card__why b{color:var(--ink)}
+.card__body{padding:20px 22px}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){.ba{grid-template-columns:1fr}}
+.ba figure{margin:0}
+.ba figcaption{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:7px;display:flex;align-items:center;gap:7px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.dot--now{background:var(--faint)}.dot--after{background:var(--red)}
+.ba img{width:100%;display:block;border:1px solid var(--line);border-radius:5px}
+.scroller{height:430px;overflow-y:auto;border:1px solid var(--line);border-radius:5px;background:#fff}
+.scroller img{width:100%;display:block;border:0;border-radius:0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+@media(max-width:720px){.steps{grid-template-columns:1fr}}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px;box-shadow:var(--shadow);position:relative}
+.step__n{font-family:var(--mono);font-size:12px;font-weight:800;color:var(--red);letter-spacing:.1em}
+.step__t{font-size:15.5px;font-weight:800;margin:6px 0 8px}
+.step__d{font-size:13px;color:var(--muted);margin:0}
+.warn{background:var(--red-soft);border:1px solid #f5c2c7;border-left:5px solid var(--red);
+  border-radius:6px;padding:20px 22px;margin-top:18px}
+.warn h3{margin:0 0 8px;font-size:15.5px;font-weight:800;color:#a3000d}
+.warn p{margin:0;font-size:13.5px;color:#6b2027}
+.foot{margin-top:60px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint)}
+.kv{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.kv span{background:#faf8f5;border:1px solid var(--line);border-radius:4px;padding:5px 10px;font-size:12px;color:var(--muted)}
+.kv b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">福岡ビルド株式会社｜Google広告 受け皿の提案</p>
+    <h1>土地活用ページ 強化版のイメージ</h1>
+    <p>f-build.co.jp/land-utilization/ を広告の着地ページとして使うために、何をどう足すか</p>
+    <div class="mocknote">これは確認用のモックです。本番サイトは一切変更していません（画面上で見た目を当てたものです）</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="lead">
+  <p style="margin:0 0 10px"><b>結論：広告の受け皿は、この土地活用ページを強化して使います。</b>apart-x は使いません。新しいLPも今は作りません。</p>
+  <p style="margin:0;font-size:14px;color:var(--muted)">
+  ページの中身（悩み4つ→強み3つ→相談事例→流れ5段階→FAQ→お客様の声）はよく出来ています。
+  足りないのは<b>「たどり着けない」「問い合わせまで遠い」</b>の2点だけなので、そこだけ直します。</p>
+  <div class="kv">
+    <span>閲覧数 <b>90日で15PV</b>（トップは1,123PV）</span>
+    <span>サイト内からのリンク <b>1本だけ</b></span>
+    <span>直帰率 <b>16%</b>（読まれてはいる）</span>
+  </div>
+</div>
+
+<h2><span class="n">01</span>なぜ apart-x ではなく、このページなのか</h2>
+<p class="sub">これまで「apart-x は問い合わせ6件」と件数で見ていました。中身を1件ずつ確認したら実態が違いました。</p>
+
+<div class="tablewrap">
+<table>
+  <tr><th>日付</th><th>問い合わせ主</th><th>実態</th></tr>
+  <tr><td class="j">4/23</td><td>A様（熊本市・土地なし）</td><td>実需だが<span class="ng">エリア外</span>。※同じ方が6/4にf-buildへも直接問い合わせ</td></tr>
+  <tr><td class="j">5/13</td><td>B様（東京都・土地なし）</td><td>実需だが<span class="ng">エリア外</span></td></tr>
+  <tr><td class="j">5/23</td><td>C様（熊本市・土地なし）</td><td>実需だが<span class="ng">エリア外</span></td></tr>
+  <tr><td class="j">6/29</td><td>テスト送信（動作確認）</td><td><span class="ng">こちらのテスト</span></td></tr>
+  <tr><td class="j">7/23</td><td>都内の制作会社</td><td><span class="ng">営業スパム</span>（同一人物が翌日CECにも同じ営業）</td></tr>
+  <tr><td class="j">8/19</td><td>都内のIT系企業ドメイン</td><td>会社ドメイン。<span class="ng">土地オーナーではない</span></td></tr>
+</table>
+</div>
+
+<div class="panel" style="margin-top:18px">
+  <p style="margin:0 0 10px;font-weight:800;font-size:15px">一方、f-build 側に来ているのは —</p>
+  <p style="margin:0 0 6px;font-size:14px">「<b>福岡市内に土地があり</b>アパートの建設を検討しています。お見積もりをお願いいたします」（2/18・要約）</p>
+  <p style="margin:0 0 12px;font-size:14px">「<b>糟屋郡に所有する土地に</b>アパートを建てる予定です」（3/28・要約）</p>
+  <p style="margin:0;font-size:14px;color:var(--muted)">
+  <b style="color:var(--ink)">福岡の土地オーナーご本人は、f-build 側にしか来ていません。</b>
+  これが受け皿をこちらにする理由です。</p>
+</div>
+
+<h2><span class="n">02</span>足すのはこの4つだけ</h2>
+<p class="sub">ページの作り替えはしません。導線と、問い合わせまでの距離だけを直します。</p>
+
+<div class="cards">
+
+  <div class="card">
+    <div class="card__head">
+      <span class="badge">01</span>
+      <p class="card__title">グローバルナビに「土地活用」を追加する</p>
+      <p class="card__why"><b>なぜ：</b>今ナビに入っておらず、90日で15PVしか見られていません。自然検索の74%はトップに着地するので、<b>トップに導線が無い＝流入をほぼ全部捨てています。</b>広告を出さなくても効きます。</p>
+    </div>
+    <div class="card__body">
+      <div class="ba">
+        <figure><figcaption><span class="dot dot--now"></span>現状（8項目）</figcaption><img src="img/nav_now.jpg" alt="現状のナビ"></figure>
+        <figure><figcaption><span class="dot dot--after"></span>強化版（先頭に土地活用）</figcaption><img src="img/nav_after.jpg" alt="強化版のナビ"></figure>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted);margin:14px 0 0">
+      960〜1440pxとスマホ360/375/390pxで、折り返さず収まることを実測済み（リンクの左右余白を12px→6pxに詰める必要あり）。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__head">
+      <span class="badge">02</span>
+      <p class="card__title">ファーストビューの直下に相談バーを置く</p>
+      <p class="card__why"><b>なぜ：</b>広告で来た人は「ここで何ができるか・いくらかかるか」を最初の3秒で判断します。<b>無料であること</b>と<b>電話番号</b>を、スクロール前に見せます。</p>
+    </div>
+    <div class="card__body">
+      <div class="ba">
+        <figure><figcaption><span class="dot dot--now"></span>現状</figcaption><img src="img/fv_now.jpg" alt="現状のFV"></figure>
+        <figure><figcaption><span class="dot dot--after"></span>強化版</figcaption><img src="img/fv_after.jpg" alt="強化版のFV"></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__head">
+      <span class="badge">03</span>
+      <p class="card__title">ページの中に相談フォームを置く（★これが一番効きます）</p>
+      <p class="card__why"><b>なぜ：</b>今このページにフォームはありません。CTAは全部 /contact/ へのリンクで、そこから<b>入力 → 確認 → 送信と3ページ移動</b>します。広告費を払って連れてきた人に3回移動させるのは、着地ページとして弱いです。</p>
+    </div>
+    <div class="card__body">
+      <figure style="margin:0"><figcaption style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:7px"><span class="dot dot--after"></span>強化版：ページ内で完結する</figcaption>
+      <img src="img/form_after.jpg" alt="ページ内フォーム" style="width:100%;border:1px solid var(--line);border-radius:5px;display:block"></figure>
+      <p style="font-size:12.5px;color:var(--muted);margin:14px 0 0">
+      項目は<b>ご相談内容・お名前・電話・メール・土地の所在地・詳細</b>の6つ。「土地の所在地」を入れておくと、返信の前にエリア内かどうかが分かります。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__head">
+      <span class="badge">04</span>
+      <p class="card__title">スマホ追従CTAの「採用エントリー」を「電話で相談」に差し替える</p>
+      <p class="card__why"><b>なぜ：</b>追従CTAは<b>すでに付いています</b>。ただし3枠のうち1枠が<b>採用エントリー</b>です。土地オーナーを広告で連れてくるページで、常時表示の3分の1が求人になっています。</p>
+    </div>
+    <div class="card__body">
+      <div class="ba">
+        <figure><figcaption><span class="dot dot--now"></span>現状：資料請求／<b style="color:var(--red)">採用エントリー</b>／LINE</figcaption><img src="img/sticky_now.jpg" alt="現状の追従CTA"></figure>
+        <figure><figcaption><span class="dot dot--after"></span>強化版：資料請求／<b style="color:var(--red)">電話で相談</b>／LINE</figcaption><img src="img/sticky_after.jpg" alt="強化版の追従CTA"></figure>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<h2><span class="n">03</span>ページ全体で見る</h2>
+<p class="sub">枠の中はスクロールできます。左が現状、右が強化版です。</p>
+<div class="ba">
+  <figure><figcaption><span class="dot dot--now"></span>現状（PC）</figcaption>
+    <div class="scroller"><img src="img/full_now.jpg" alt="現状のページ全体"></div></figure>
+  <figure><figcaption><span class="dot dot--after"></span>強化版（PC）</figcaption>
+    <div class="scroller"><img src="img/full_after.jpg" alt="強化版のページ全体"></div></figure>
+</div>
+
+<h2><span class="n">04</span>進め方</h2>
+<p class="sub">いきなりLPを作ると、何を直せばいいか分からないまま作ることになります。データを取ってから判断します。</p>
+<div class="steps">
+  <div class="step">
+    <p class="step__n">STEP 1</p>
+    <p class="step__t">導線と計測を直す</p>
+    <p class="step__d">ナビに「土地活用」を追加。コンバージョン計測を修正。ここは広告の有無に関係なく効きます。</p>
+  </div>
+  <div class="step">
+    <p class="step__n">STEP 2</p>
+    <p class="step__t">小さく1ヶ月回す</p>
+    <p class="step__d">見るのはCV数より、検索語句が意図どおりか・着地ページで離脱していないか。ここで初めてこのページの実力が分かります。</p>
+  </div>
+  <div class="step">
+    <p class="step__n">STEP 3</p>
+    <p class="step__t">結果を見て足す</p>
+    <p class="step__d">ページ内フォーム等を追加。新しいLPが要るかどうかも、ここで判断します。</p>
+  </div>
+</div>
+
+<div class="warn">
+  <h3>出稿の前に、ひとつ必ず潰します</h3>
+  <p>コンバージョン計測が動いていません。8/29に実際に届いた問い合わせで、GA4のCVイベント（generate_lead）が発火していませんでした。
+  ページビュー自体は記録されているので、計測の付け方の問題です。<b>このままだと広告のCPAが測れない</b>ため、出稿前に直します。</p>
+</div>
+
+<p class="foot">
+株式会社斗／星崎　2026-08-30 作成<br>
+このページは社内・クライアント確認用です（noindex）。掲載している画面は、本番ページに見た目を当てて撮影したモックであり、<b>本番サイトには一切変更を加えていません。</b>フォームも動作しません。問い合わせ主のお名前・社名は伏せています（実名は社内資料にのみ記録）。
+</p>
+
+</div>
+</body>
+</html>
