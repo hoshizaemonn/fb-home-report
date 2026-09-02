@@ -4779,7 +4779,7 @@
  <span class="__tag">DEMO</span>
  <span>二丈上深江 ご成約後のイメージ　<b>本番ではありません／計測タグは外してあります</b></span>
  <span class="__sw"><span class="__lb">成約表示：</span>
-  <button data-k="A">A 斜め帯</button><button data-k="B">B 白×緑（前回）</button><button data-k="B2">B 赤①（深紅）</button><button data-k="B3">B 赤②（コーポレート）</button><button data-k="C">C 事例</button></span>
+  <button data-k="A">A 斜め帯</button><button data-k="B3">B バッジ（赤）</button><button data-k="C">C 事例</button></span>
 </div>
 <style>
  #__demo_bar{position:fixed;top:0;left:0;right:0;z-index:99999;background:#0d2137;color:#fff;
@@ -4796,13 +4796,7 @@
  .__sold{position:absolute;z-index:60;pointer-events:none}
  .__soldA{top:26px;left:-64px;transform:rotate(-24deg);background:#c8102e;color:#fff;
   font:800 16px/1 'Hiragino Sans',sans-serif;letter-spacing:.22em;padding:11px 74px;box-shadow:0 3px 12px rgba(0,0,0,.35)}
- .__soldB{top:16px;right:16px;background:#fff;color:#14663a;border:2px solid #2f9e5f;border-radius:999px;
-  padding:10px 18px;font:700 13px/1.4 'Hiragino Sans',sans-serif;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.22)}
- .__soldB small{display:block;font-size:10.5px;font-weight:600;color:#4a7a5e}
  /* B案 赤ベース・白文字（中野様ご要望 2026-09-01） */
- .__soldB2{top:16px;right:16px;background:#c8102e;color:#fff;border:2px solid rgba(255,255,255,.9);border-radius:999px;
-  padding:10px 18px;font:700 13px/1.4 'Hiragino Sans',sans-serif;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.28)}
- .__soldB2 small{display:block;font-size:10.5px;font-weight:600;color:rgba(255,255,255,.92)}
  .__soldB3{top:16px;right:16px;background:#e60012;color:#fff;border:2px solid rgba(255,255,255,.9);border-radius:999px;
   padding:10px 18px;font:700 13px/1.4 'Hiragino Sans',sans-serif;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.28)}
  .__soldB3 small{display:block;font-size:10.5px;font-weight:600;color:rgba(255,255,255,.92)}
@@ -4825,8 +4819,6 @@ function __setBadge(k){
     if(getComputedStyle(p).position==='static')p.style.position='relative';
     p.style.overflow='hidden';
     if(k==='A')p.insertAdjacentHTML('beforeend','<div class="__sold __soldA">SOLD OUT</div>');
-    if(k==='B')p.insertAdjacentHTML('beforeend','<div class="__sold __soldB">ご成約済<small>ありがとうございました</small></div>');
-    if(k==='B2')p.insertAdjacentHTML('beforeend','<div class="__sold __soldB2">ご成約済<small>ありがとうございました</small></div>');
     if(k==='B3')p.insertAdjacentHTML('beforeend','<div class="__sold __soldB3">ご成約済<small>ありがとうございました</small></div>');
     if(k==='C')p.insertAdjacentHTML('beforeend','<div class="__sold __soldC">CASE 01</div><div class="__sold __soldC2">ご成約済</div>');
   });
@@ -4834,7 +4826,7 @@ function __setBadge(k){
 }
 document.addEventListener('click',function(e){ if(e.target.dataset&&e.target.dataset.k) __setBadge(e.target.dataset.k); });
 window.addEventListener('load',function(){setTimeout(function(){
-  var k='B2'; try{k=localStorage.getItem('__badge')||'B2';}catch(e){} __setBadge(k);},1400);});
+  var k='B3'; try{k='B3';}catch(e){} __setBadge(k);},1400);});
 </script>
 
 </body>
