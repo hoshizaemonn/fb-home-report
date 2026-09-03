@@ -3415,7 +3415,9 @@
             flex-shrink: 0;
             width: 148px;
             height: 148px;
-            background: #fff;
+            /* 2026-09-03 中野様ご要望：ご成約済の表示は赤ベース・白文字に統一
+               （右上の「ご成約済」バッジ #e60012 と同色に揃える） */
+            background: #e60012;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
@@ -3429,20 +3431,20 @@
             font-size: 0.6rem;
             font-weight: 700;
             letter-spacing: 2px;
-            color: #B8882A;
+            color: rgba(255,255,255,.88);
             margin-bottom: 2px;
         }
         .special-offer-badge-main {
             font-size: 1.15rem;
             font-weight: 900;
-            color: #7A5C1E;
+            color: #fff;
             line-height: 1.3;
             text-align: center;
         }
         .special-offer-badge-sub {
             font-size: 0.55rem;
             font-weight: 700;
-            color: #B8882A;
+            color: rgba(255,255,255,.85);
             margin-top: 4px;
             letter-spacing: 1px;
         }
