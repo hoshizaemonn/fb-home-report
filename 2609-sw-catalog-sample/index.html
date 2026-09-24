@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>広告配信実績レポート（デザインサンプル）</title>
+<title>シルバーウィーク広告 配信実績レポート</title>
 <style>
   .viz-root {
     color-scheme: light;
@@ -380,17 +380,17 @@
 </head>
 <body>
 <div class="viz-root wrap">
-  <h1>広告配信実績レポート（サンプル）</h1>
-  <p class="subtitle">キャンペーン「（サンプル）キャンペーンA」／消化額・インプレッション・リンククリックの推移（Day1〜Day5・仮の期間）</p>
+  <h1>広告配信実績レポート</h1>
+  <p class="subtitle">キャンペーン「FBHOME_SW_20260919」／消化額・インプレッション・リンククリックの推移（9/19〜9/23）</p>
 
   <div class="conclusion-box">
-    <div class="conclusion-title">結論（詳細は下記参照）※サンプル値</div>
+    <div class="conclusion-title">結論（詳細は下記参照）</div>
     <ol class="conclusion-list">
       <li class="conclusion-item">
         <span class="conclusion-num">1</span>
-        <span>資料請求は<strong>0件</strong>だったが、クリック→LP到達は問題なし（LP到達がクリック数を上回る想定）。
+        <span>資料請求は<strong>0件</strong>だったが、クリック→LP到達は問題なし（LP到達がクリック数を上回る）。
         最大の問題は<span class="ng-word">「LPに来た人がほぼ何も見ずに離脱している」</span>こと
-        （直帰率60%台後半〜70%台後半・平均滞在15秒前後・フォーム開始0件／いずれもサンプル値）。</span>
+        （直帰率64〜78%・平均滞在14〜23秒・フォーム開始0件）。</span>
       </li>
       <li class="conclusion-item">
         <span class="conclusion-num">2</span>
@@ -404,102 +404,96 @@
     </ol>
   </div>
 
-  <!-- サマリー（サンプル値） -->
+  <!-- サマリー -->
   <div class="summary">
     <div class="summary-card">
-      <div class="label">消化額（5日間合計・サンプル）</div>
-      <div class="value">¥8,100</div>
+      <div class="label">消化額（5日間合計）</div>
+      <div class="value">¥7,994</div>
     </div>
     <div class="summary-card">
-      <div class="label">リーチ（サンプル）</div>
-      <div class="value">9,000</div>
+      <div class="label">リーチ</div>
+      <div class="value">9,013</div>
     </div>
     <div class="summary-card">
-      <div class="label">インプレッション（サンプル）</div>
-      <div class="value">11,600</div>
+      <div class="label">インプレッション</div>
+      <div class="value">11,333</div>
     </div>
     <div class="summary-card">
-      <div class="label">リンククリック（サンプル）</div>
-      <div class="value">500</div>
+      <div class="label">リンククリック</div>
+      <div class="value">425</div>
     </div>
   </div>
   <div class="summary" style="grid-template-columns: 1fr;">
     <div class="summary-card lead">
-      <div class="label">資料請求（generate_lead・サンプル）</div>
+      <div class="label">資料請求（generate_lead）</div>
       <div class="value">0件（全期間を通じて）</div>
     </div>
   </div>
 
   <div class="legend">
     <span class="legend-item"><span class="legend-swatch normal"></span>正常配信日</span>
-    <span class="legend-item"><span class="legend-swatch issue"></span>切替後も配信されず（Day4）</span>
+    <span class="legend-item"><span class="legend-swatch issue"></span>切替後も配信されず（9/22）</span>
   </div>
 
   <!-- 消化額 -->
   <div class="chart-block">
-    <div class="chart-title">消化額（円）※サンプル値</div>
-    <div class="chart-note">通算予算¥10,000のうち、5日間で¥8,100を消化（サンプル値）</div>
+    <div class="chart-title">消化額（円）</div>
+    <div class="chart-note">通算予算¥8,000のうち、5日間で¥7,994を消化</div>
     <div class="bars" id="spend-bars"></div>
     <div class="axis-labels" id="spend-axis"></div>
   </div>
 
   <!-- インプレッション -->
   <div class="chart-block">
-    <div class="chart-title">インプレッション（回）※サンプル値</div>
-    <div class="chart-note">広告が実際に表示された回数（サンプル値）</div>
+    <div class="chart-title">インプレッション（回）</div>
+    <div class="chart-note">広告が実際に表示された回数</div>
     <div class="bars" id="imp-bars"></div>
     <div class="axis-labels" id="imp-axis"></div>
   </div>
 
   <!-- リンククリック -->
   <div class="chart-block">
-    <div class="chart-title">リンククリック（回）※サンプル値</div>
-    <div class="chart-note">5日間合計500クリック（サンプル値）／LP到達 サンプル値</div>
+    <div class="chart-title">リンククリック（回）</div>
+    <div class="chart-note">5日間合計425クリック／LP到達459セッション（GA4実測）</div>
     <div class="bars" id="click-bars"></div>
     <div class="axis-labels" id="click-axis"></div>
   </div>
 
   <table class="data-table">
-    <caption>日別実績データ（表形式・サンプル値）</caption>
+    <caption>日別実績データ（表形式）</caption>
     <thead>
       <tr><th>日付</th><th>消化額</th><th>インプレッション</th><th>リンククリック</th><th>CTR</th><th>備考</th></tr>
     </thead>
     <tbody id="table-body"></tbody>
   </table>
 
-  <!-- 配信トラブル日の経緯（サンプルシナリオ） -->
+  <!-- 配信トラブル日の経緯 -->
   <div class="incident-box">
-    <div class="incident-title">Day4に何が起きていたか（経緯・サンプルシナリオ）</div>
+    <div class="incident-title">9/22に何が起きていたか（経緯）</div>
     <ol>
-      <li>Day1〜3は既存の広告セット（当初はリンククリック数の最大化目標）で配信が進んでいた（想定）</li>
+      <li>9/19〜21は既存の広告セット（当初はリンククリック数の最大化目標）で配信が進んでいた</li>
       <li>より確度の高いリード獲得を狙うため、<strong>広告セットをリード数の最大化に
-        切り替えて設定し直した</strong>（サンプル：新規広告セットB）</li>
-      <li><strong>切り替えて対応したにもかかわらず、Day4は一度も配信されなかった</strong>
-        （消化¥0・インプレッション0のまま終日推移／想定シナリオ）</li>
+        切り替えて設定し直した</strong>（新規広告セット）</li>
+      <li><strong>切り替えて対応したにもかかわらず、9/22は一度も配信されなかった</strong>
+        （消化¥0・インプレッション0のまま終日推移）</li>
       <li>原因調査の結果、同じキャンペーン内に残っていた他の広告セットと最適化目標が
-        揃っていなかったこと等が影響していた可能性が高いと判明（想定）</li>
-      <li>Day5、原因に対応したうえで配信を再開し、駆け込みで残り予算を消化した（想定）</li>
+        揃っていなかったこと等が影響していた可能性が高いと判明</li>
+      <li>9/23、原因に対応したうえで配信を再開し、駆け込みで残り予算を消化した</li>
     </ol>
   </div>
 
-  <p class="footnote">
-    本ページの数値はすべてサンプル値であり、実際の広告成果ではありません。レイアウト・構成・文言のデザイン確認用としてご覧ください。
-    実データ（実際の消化額・セッション数・直帰率等）は、別途社内共有（Chatwork等）にてお渡ししています。
-  </p>
+  <div class="section-divider"><span>結果まとめ</span></div>
 
-  <div class="section-divider"><span>結果まとめ・今後への提案</span></div>
-
-  <!-- 獲得ファネル（サンプル値） -->
+  <!-- 獲得ファネル -->
   <div class="chart-block" style="margin-top: 0;">
-    <div class="chart-title">獲得ファネル（クリック→LP到達→フォーム開始→資料請求）※サンプル値</div>
-    <div class="chart-note">サンプル値（キャンペーンA、Day1〜5合計）。各バーの幅は最大値（LP到達540）を基準に表示</div>
+    <div class="chart-title">獲得ファネル（クリック→LP到達→フォーム開始→資料請求）</div>
+    <div class="chart-note">9/19〜9/23合計。各バーの幅は最大値（LP到達459）を基準に表示</div>
     <div class="funnel" id="funnel"></div>
   </div>
 
-  <!-- 調べて分かったこと（○×・サンプル） -->
+  <!-- 調べて分かったこと（○×） -->
   <div class="chart-block">
-    <div class="chart-title">調べて分かったこと（サンプル）</div>
-    <div class="chart-note">レポートの見せ方サンプルです。項目・結果の文言は実際の調査結果の型を踏襲した仮の内容です</div>
+    <div class="chart-title">調べて分かったこと</div>
     <table class="data-table findings-table">
       <thead>
         <tr><th style="width:34px;"></th><th>確認項目</th><th style="text-align:left;">結果</th></tr>
@@ -523,11 +517,11 @@
 <script>
 (function () {
   const data = [
-    { date: "Day1", spend: 2000, imp: 3000, click: 150, issue: false },
-    { date: "Day2", spend: 1500, imp: 2200, click: 110, issue: false },
-    { date: "Day3", spend: 600,  imp: 900,  click: 40,  issue: false },
-    { date: "Day4", spend: 0,    imp: 0,    click: 0,   issue: true  },
-    { date: "Day5", spend: 4000, imp: 5500, click: 200, issue: false },
+    { date: "9/19", spend: 1988, imp: 2884, click: 127, issue: false },
+    { date: "9/20", spend: 1451, imp: 2217, click: 95,  issue: false },
+    { date: "9/21", spend: 584,  imp: 783,  click: 32,  issue: false },
+    { date: "9/22", spend: 0,    imp: 0,    click: 0,   issue: true  },
+    { date: "9/23", spend: 3971, imp: 5449, click: 171, issue: false },
   ];
   function ctr(d) {
     return d.imp > 0 ? ((d.click / d.imp) * 100).toFixed(2) + "%" : "—";
@@ -556,7 +550,7 @@
         const bar = document.createElement("div");
         bar.className = "bar";
         bar.style.height = "2px";
-        bar.title = d.date + "：" + formatter(d[key]) + "（リード最大化に切替後も配信されず・サンプル）";
+        bar.title = d.date + "：" + formatter(d[key]) + "（リード最大化に切替後も配信されず）";
         col.appendChild(bar);
       } else {
         const valueLabel = document.createElement("div");
@@ -568,7 +562,7 @@
         bar.className = "bar";
         const pct = max > 0 ? (d[key] / max) * 100 : 0;
         bar.style.height = "calc(" + pct + "% - 20px)";
-        bar.title = d.date + "：" + formatter(d[key]) + "（サンプル値）";
+        bar.title = d.date + "：" + formatter(d[key]);
         col.appendChild(bar);
       }
 
@@ -610,16 +604,16 @@
       "<td>" + d.click.toLocaleString() + "</td>" +
       "<td>" + ctr(d) + "</td>" +
       "<td" + (d.issue ? ' class="issue-cell"' : "") + ">" +
-      (d.issue ? "切替後も未配信（不具合・サンプル）" : "正常配信（サンプル）") + "</td>";
+      (d.issue ? "切替後も未配信（不具合）" : "正常配信") + "</td>";
     tbody.appendChild(tr);
   });
 
-  // 獲得ファネル（サンプル値）
+  // 獲得ファネル
   const funnelStages = [
-    { name: "リンククリック", value: 500, source: "サンプル値（広告管理画面想定）", delta: null },
-    { name: "LP到達（セッション）", value: 540, source: "サンプル値（GA4想定）", delta: { text: "前段階の108%（クリック数を上回る想定＝クリックからの技術的な離脱なし、というシナリオ）", warn: false } },
-    { name: "フォーム開始（form_start）", value: 0, source: "サンプル値（該当イベントなしの想定）", delta: { text: "前段階（540件）から0件。着地後にフォーム入力へ進んだ人が1人もいなかった、というシナリオ", warn: true } },
-    { name: "資料請求（generate_lead）", value: 0, source: "サンプル値（該当イベントなしの想定）", delta: { text: "フォーム開始が0件のため、資料請求も必然的に0件", warn: false } },
+    { name: "リンククリック", value: 425, source: "Meta広告マネージャー実測", delta: null },
+    { name: "LP到達（セッション）", value: 459, source: "GA4実測", delta: { text: "前段階の108%（クリック数を上回る＝クリックからの技術的な離脱は確認されず）", warn: false } },
+    { name: "フォーム開始（form_start）", value: 0, source: "GA4実測（該当イベントなし）", delta: { text: "前段階（459件）から0件。着地後にフォーム入力へ進んだ人が1人もいなかった", warn: true } },
+    { name: "資料請求（generate_lead）", value: 0, source: "GA4実測（該当イベントなし）", delta: { text: "フォーム開始が0件のため、資料請求も必然的に0件", warn: false } },
   ];
   const funnelMax = Math.max(...funnelStages.map(s => s.value));
   const funnelEl = document.getElementById("funnel");
@@ -657,14 +651,14 @@
     funnelEl.appendChild(row);
   });
 
-  // 調べて分かったこと（○×・サンプル）
+  // 調べて分かったこと（○×）
   const findings = [
-    { mark: "○", cls: "ok", item: "クリック→LP到達", result: "問題なし（LP到達がクリック数を上回る想定＝技術的な離脱は確認されず／サンプル）" },
-    { mark: "○", cls: "ok", item: "広告とLPのビジュアル整合性", result: "問題なし（動画の建物・色味・訴求とLPファーストビューが一致することを確認、という想定／サンプル）" },
-    { mark: "○", cls: "ok", item: "フォームのUX", result: "問題なし（入力項目は名前・メールの2つのみ、電話番号等の負荷なし／サンプル）" },
-    { mark: "○", cls: "ok", item: "季節要因", result: "根拠薄い（過去の同条件配信と比較しても季節が主要因とは言えない、という想定／サンプル）" },
-    { mark: "△", cls: "warn", item: "Day4の配信不具合", result: "配信停止あり（切替対応後もDay4は終日配信されず消化¥0・imp0、という想定シナリオ）" },
-    { mark: "×", cls: "ng", item: "LPでの早期離脱", result: "最大の問題（直帰率60%台後半〜70%台後半・平均滞在15秒前後・フォーム開始0件／いずれもサンプル値）" },
+    { mark: "○", cls: "ok", item: "クリック→LP到達", result: "問題なし（LP到達がクリック数を上回る＝技術的な離脱は確認されず）" },
+    { mark: "○", cls: "ok", item: "広告とLPのビジュアル整合性", result: "問題なし（動画の建物・色味・訴求とLPファーストビューが一致することを確認）" },
+    { mark: "○", cls: "ok", item: "フォームのUX", result: "問題なし（入力項目は名前・メールの2つのみ、電話番号等の負荷なし）" },
+    { mark: "○", cls: "ok", item: "季節要因", result: "根拠薄い（過去の同条件配信と比較しても季節が主要因とは言えない）" },
+    { mark: "△", cls: "warn", item: "9/22の配信不具合", result: "配信停止あり（切替対応後も9/22は終日配信されず消化¥0・imp0）" },
+    { mark: "×", cls: "ng", item: "LPでの早期離脱", result: "最大の問題（直帰率64〜78%・平均滞在14〜23秒・フォーム開始0件）" },
   ];
   const findingsBody = document.getElementById("findings-body");
   findings.forEach(f => {
