@@ -106,11 +106,40 @@
 .price-case-card.is-placeholder{background:#fffaf0;border:1px dashed #c8952e}
 .price-case-card.is-placeholder .price-case-tag{background:#b8791a}
 .price-case-card.is-placeholder .price-case-price .value,
-.price-case-card.is-placeholder .price-case-monthly .value{color:#9a6a12}
+.price-case-card.is-placeholder .price-case-monthly .value{color:#9a6a12}.monthly-note{display:inline-block;margin-top:3px;font-size:11px;color:var(--muted);font-weight:400}
 .placeholder-badge{display:inline-block;background:#c8952e;color:#fff;font-size:10.5px;letter-spacing:.06em;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle}
 .price-cases-note{max-width:900px;margin:32px auto 0;font-size:12px;color:var(--muted);line-height:1.9;background:#fff;border:1px solid var(--line);border-radius:4px;padding:16px 20px}
 .price-cases-note strong{color:var(--ink)}
 .price-cases-cta{text-align:center;margin-top:32px}
+/* ▲▲▲ 追加ここまで ▲▲▲ */
+/* ▼▼▼ 追加：FVインパクト版（v3・20260925・実物件×価格の直接訴求） ▼▼▼ */
+.hero-impact{position:relative;min-height:min(720px,92svh);display:flex;align-items:flex-end;overflow:hidden}
+.hero-impact-media{position:absolute;inset:0}
+.hero-impact-media img{width:100%;height:100%;object-fit:cover;object-position:55% center}
+.hero-impact-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,25,33,.08) 0%,rgba(10,25,33,.18) 38%,rgba(10,25,33,.9) 100%)}
+.hero-impact-content{position:relative;z-index:2;color:#fff;padding:64px 6% 56px;max-width:780px}
+.hero-impact-badge{display:inline-block;background:#fff;color:var(--ink);font-size:12px;letter-spacing:.08em;padding:6px 14px;margin-bottom:18px}
+.hero-impact-content .eyebrow{color:#d7e2e7;margin-bottom:10px;display:block}
+.hero-impact-content h1{font-family:var(--serif);font-size:clamp(28px,4vw,46px);line-height:1.5;letter-spacing:.05em;margin-bottom:18px}
+.hero-impact-name{font-size:15px;letter-spacing:.04em;margin-bottom:6px;color:#eef4f6}
+.hero-impact-spec{font-size:13px;color:#cdd9de;margin-bottom:22px}
+.hero-impact-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;background:rgba(10,25,33,.55);border:1px solid rgba(255,255,255,.28);padding:16px 20px;margin-bottom:24px}
+.hero-impact-price .label{font-size:12px;color:#cdd9de}
+.hero-impact-price .value{font-family:Georgia,serif;font-size:clamp(28px,3.4vw,38px);line-height:1}
+.hero-impact-price .monthly{flex-basis:100%;font-size:11.5px;color:#b9c9d1;margin-top:2px}
+.hero-impact-cta{max-width:480px}
+.hero-impact-figcaption{position:relative;z-index:2;color:#eef4f6;font-size:11px;text-align:right;padding:0 6% 16px}
+@media(max-width:700px){
+ .hero-impact{min-height:88svh}
+ .hero-impact-content{padding:36px 20px 30px}
+ .hero-impact-badge{font-size:11px;padding:5px 12px;margin-bottom:14px}
+ .hero-impact-content h1{font-size:24px;line-height:1.6;margin-bottom:14px}
+ .hero-impact-name{font-size:14px}
+ .hero-impact-spec{font-size:12px;margin-bottom:18px}
+ .hero-impact-price{padding:13px 15px;gap:6px 14px;margin-bottom:20px}
+ .hero-impact-price .value{font-size:26px}
+ .hero-impact-figcaption{padding:0 20px 12px;font-size:10px}
+}
 /* ▲▲▲ 追加ここまで ▲▲▲ */
 </style>
 <!-- Google Tag Manager -->
@@ -127,11 +156,27 @@
  <nav aria-label="ページ内ナビゲーション"><a class="nav-story" href="#stories">暮らしの風景</a><a class="nav-catalog" href="#catalog">無料の実例集を受け取る <span aria-hidden="true">↗</span></a></nav>
 </header>
 <main id="main">
-<section class="hero" id="top" aria-labelledby="hero-title">
- <div class="hero-paper"><p class="eyebrow">A LIFE, WELL LIVED.</p><h1 id="hero-title">好きな暮らしは、<br>いつもの日常にある。</h1><div class="hero-sign"><span>California</span><span>in everyday life.</span></div><p class="hero-edition">FB HOME — PHOTO BOOK</p></div>
- <figure class="hero-photo"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-porch.jpeg" alt="青空の下、白い外壁とブルーの窓枠が映えるカバードポーチ" width="1237" height="825" fetchpriority="high"><figcaption>福岡ビルド モデルハウス・展示場／施工実例集より</figcaption></figure>
- <div class="hero-offer"><p>CALIFORNIA STYLE 施工実例集<span>全18ページ・PDF・無料</span></p><a href="#catalog" class="text-link">実例集を受け取る <span aria-hidden="true">→</span></a></div>
+<section class="hero-impact" id="top" aria-labelledby="hero-title">
+ <div class="hero-impact-media">
+  <img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-porch.jpeg" alt="糸島市 二丈上深江 ニューカリフォルニア建売の外観・カバードポーチ" width="1237" height="825" fetchpriority="high">
+  <div class="hero-impact-scrim"></div>
+ </div>
+ <div class="hero-impact-content">
+  <p class="hero-impact-badge">建築実例／ご成約済み</p>
+  <p class="eyebrow">REAL CASE &amp; PRICE</p>
+  <h1 id="hero-title">この価格で、<br>ここまで建てられた。</h1>
+  <p class="hero-impact-name">糸島市 二丈上深江　ニューカリフォルニア建売</p>
+  <p class="hero-impact-spec">平屋 3LDK／建物27.05坪（89.43㎡）・土地68.29坪（225.78㎡）</p>
+  <div class="hero-impact-price">
+   <span class="label">販売価格（税込）</span>
+   <span class="value">3,490万円</span>
+   <span class="monthly">月々11.2万円程度〜（目安／フラット35相当・35年・金利1.8%想定・頭金なしの場合）</span>
+  </div>
+  <a href="#catalog" class="button button-light hero-impact-cta">この物件を含む全18ページの実例集を無料で見る <span aria-hidden="true">→</span></a>
+ </div>
 </section>
+<p class="hero-impact-figcaption">福岡ビルド 施工実例（二丈上深江）／施工実例集より</p>
+<div class="hero-offer"><p>CALIFORNIA STYLE 施工実例集<span>全18ページ・PDF・無料</span></p><a href="#catalog" class="text-link">実例集を受け取る <span aria-hidden="true">→</span></a></div>
 <!-- ▼▼▼ 追加：施工事例×価格帯セクション（v2たたき台・20260925・本番未反映） ▼▼▼ -->
 <section class="price-cases" id="price-cases" aria-labelledby="price-cases-title">
  <div class="price-cases-head">
@@ -154,7 +199,7 @@
      <p class="label">販売価格（税込）</p>
      <p class="value">3,490万円</p>
     </div>
-    <p class="price-case-monthly">月々のお支払い目安：<span class="value">要確認（住宅ローンシミュレーション条件は要すり合わせ）</span></p>
+    <p class="price-case-monthly">月々のお支払い目安：<span class="value">11.2万円程度〜</span><br><span class="monthly-note">※目安／フラット35相当・返済期間35年・金利1.8%想定・頭金なしの場合（概算・要すり合わせ）</span></p>
    </div>
   </div>
 
@@ -197,7 +242,7 @@
  <div class="price-cases-note">
   <strong>※このセクションはたたき台です（本番未反映）。</strong><br>
   事例1（二丈上深江）は物件概要書・販売図面（2026/7/17版）に基づく実データです。事例2・3は社内フォルダで確認できた写真を仮置きしているだけで、価格・物件名は未確認です。掲載する場合は中野さんに①この2件の物件名・成約価格・面積、②他に掲載可能な成約済み事例があるかをご確認ください。<br>
-  月々のお支払い目安は、金利・返済年数などローンの前提条件が社内資料に見当たらなかったため、全カードとも仮の文言のままにしています。表示するには福岡ビルド側で条件（フラット35／年数／金利タイプ等）をすり合わせたうえで再計算が必要です。
+  月々のお支払い目安（二丈上深江カード）は、社内資料に金利・返済年数の一次データが見当たらなかったため、<strong>一般的な住宅ローンの標準的な前提（フラット35相当・返済期間35年・金利1.8%想定・頭金なしの場合）で試算した概算</strong>です。確定値ではありません。表示するには、福岡ビルド側の実際のローン提携条件（金利タイプ・提携金融機関の実勢金利・返済年数）とすり合わせたうえでの再計算・本番反映前の中野さん・角田代表への確認が必要です。事例2・3は価格未確定のため月々目安も算出していません。
  </div>
 
  <div class="price-cases-cta">
