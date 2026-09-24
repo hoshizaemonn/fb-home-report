@@ -617,7 +617,7 @@
   const funnelStages = [
     { name: "リンククリック", value: 425, source: "Meta広告マネージャー実測", delta: null },
     { name: "LP到達（セッション）", value: 459, source: "GA4実測", delta: { text: "前段階の108%（クリック数を上回る＝クリックからの技術的な離脱は確認されず）", warn: false } },
-    { name: "フォーム開始（form_start）", value: 0, source: "GA4実測（該当イベントなし）", delta: { text: "前段階（459件）から0件。着地後にフォーム入力へ進んだ人が1人もいなかった", warn: true } },
+    { name: "フォーム開始（form_start）", value: 0, source: "GA4実測（該当イベントなし）", delta: { text: "前段階（459件）から0件。着地後にフォーム入力へ進んだ人が1人もいなかった＝資料請求を求めていない層への配信だったことを裏付ける", warn: true } },
     { name: "資料請求（generate_lead）", value: 0, source: "GA4実測（該当イベントなし）", delta: { text: "フォーム開始が0件のため、資料請求も必然的に0件", warn: false } },
   ];
   const funnelMax = Math.max(...funnelStages.map(s => s.value));
@@ -663,7 +663,8 @@
     { mark: "○", cls: "ok", item: "フォームのUX", result: "問題なし（入力項目は名前・メールの2つのみ、電話番号等の負荷なし）" },
     { mark: "○", cls: "ok", item: "季節要因", result: "根拠薄い（過去の同条件配信と比較しても季節が主要因とは言えない）" },
     { mark: "△", cls: "warn", item: "9/22の配信不具合", result: "配信停止あり（切替対応後も9/22は終日配信されず消化¥0・imp0）" },
-    { mark: "×", cls: "ng", item: "LPでの早期離脱", result: "最大の問題（直帰率64〜78%・平均滞在14〜23秒・フォーム開始0件）" },
+    { mark: "×", cls: "ng", item: "配信対象のミスマッチ", result: "最有力の原因。クリック（425件）は十分に獲得できているが「資料請求を求める人」への配信ではなかった" },
+    { mark: "×", cls: "ng", item: "LPでの早期離脱", result: "上記の結果として発生（直帰率64〜78%・平均滞在14〜23秒・フォーム開始0件）" },
   ];
   const findingsBody = document.getElementById("findings-body");
   findings.forEach(f => {
