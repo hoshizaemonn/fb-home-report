@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>広告配信実績レポート（デザインサンプル）</title>
+<style>
+  .viz-root {
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --surface-2:      #f2f1ee;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #85837c;
+    --border:         #d8d7d2;
+    --series-1:       #2a78d6; /* 正常配信日 */
+    --status-critical:#d03b3b; /* 不具合日マーカー */
+    --status-critical-bg: #fbe9e9;
+    --sample-bg: #fff6e0;
+    --sample-border: #d9a441;
+    --sample-ink: #8a5b00;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--surface-2);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    color: var(--text-primary);
+    padding: 32px 16px 60px;
+  }
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px 28px;
+  }
+  h1 {
+    font-size: 19px;
+    margin: 0 0 4px;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 28px;
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  .legend-swatch.normal { background: var(--series-1); }
+  .legend-swatch.issue { background: var(--surface-2); border: 1.5px dashed var(--status-critical); }
+
+  .chart-block { margin-top: 28px; }
+  .chart-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .chart-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+
+  .bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+    height: 180px;
+    border-bottom: 1px solid var(--border);
+    padding: 0 4px;
+    position: relative;
+  }
+  .bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    position: relative;
+  }
+  .bar-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .bar {
+    width: 68%;
+    background: var(--series-1);
+    border-radius: 4px 4px 0 0;
+    transition: opacity .15s;
+  }
+  .bar:hover { opacity: .8; }
+  .bar-col.issue .bar {
+    width: 68%;
+    min-height: 2px;
+    background: var(--surface-2);
+    border: 1.5px dashed var(--status-critical);
+    border-bottom: none;
+  }
+  .issue-marker {
+    position: absolute;
+    bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: var(--status-critical);
+    font-weight: 600;
+  }
+  .issue-marker .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--status-critical);
+  }
+  .issue-label {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--status-critical-bg);
+    color: var(--status-critical);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 6px;
+    border-radius: 4px;
+    white-space: normal;
+    word-break: keep-all;
+    text-align: center;
+    line-height: 1.4;
+    width: max-content;
+    max-width: 84px;
+    border: 1px solid var(--status-critical);
+  }
+  @media (max-width: 480px) {
+    .issue-label { font-size: 8.5px; padding: 2px 4px; max-width: 66px; line-height: 1.3; }
+  }
+  .axis-labels {
+    display: flex;
+    gap: 18px;
+    padding: 0 4px;
+    margin-top: 8px;
+  }
+  .axis-label {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .axis-label .date { font-weight: 600; color: var(--text-primary); }
+
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 36px;
+    font-size: 12px;
+  }
+  table.data-table caption {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+  table.data-table th, table.data-table td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: right;
+  }
+  table.data-table th:first-child, table.data-table td:first-child {
+    text-align: left;
+  }
+  table.data-table thead th {
+    background: var(--surface-2);
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+  table.data-table td.issue-cell {
+    color: var(--status-critical);
+    font-weight: 600;
+  }
+
+  .footnote {
+    margin-top: 22px;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .summary-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+  .summary-card .label {
+    font-size: 10.5px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+  .summary-card .value {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .summary-card.lead .value { color: var(--status-critical); }
+  @media (max-width: 480px) {
+    .summary { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .incident-box {
+    margin-top: 28px;
+    background: var(--status-critical-bg);
+    border: 1px solid var(--status-critical);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .incident-box .incident-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--status-critical);
+    margin-bottom: 8px;
+  }
+  .incident-box ol {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--text-primary);
+  }
+  .incident-box li { margin-bottom: 4px; }
+
+  .section-divider {
+    margin-top: 40px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  .section-divider::before,
+  .section-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .funnel { margin-top: 4px; }
+  .funnel-row { margin-bottom: 16px; }
+  .funnel-row:last-child { margin-bottom: 0; }
+  .funnel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  .funnel-head .stage-name { color: var(--text-primary); font-weight: 600; }
+  .funnel-head .stage-value { color: var(--text-primary); font-weight: 700; font-size: 14px; }
+  .funnel-track {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    height: 22px;
+    overflow: hidden;
+    position: relative;
+  }
+  .funnel-bar {
+    height: 100%;
+    background: var(--series-1);
+    border-radius: 4px;
+    min-width: 2px;
+  }
+  .funnel-bar.zero {
+    height: 100%;
+    width: 6px !important;
+    background: var(--status-critical-bg);
+    border: 1.5px dashed var(--status-critical);
+    border-radius: 4px;
+  }
+  .funnel-delta {
+    margin-top: 5px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .funnel-delta.warn { color: var(--status-critical); font-weight: 600; }
+
+  .findings-table td.mark {
+    text-align: center;
+    font-weight: 700;
+    width: 34px;
+  }
+  .findings-table td.mark.ok { color: var(--text-primary); }
+  .findings-table td.mark.warn { color: var(--text-secondary); }
+  .findings-table td.mark.ng { color: var(--status-critical); }
+
+  .limitation-box {
+    margin-top: 22px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+  .limitation-box .limitation-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .policy-box {
+    margin-top: 22px;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--series-1);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .policy-box .policy-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--series-1);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .policy-box .approved-tag {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--series-1);
+    border: 1px solid var(--series-1);
+    border-radius: 10px;
+    padding: 1px 8px;
+  }
+  .policy-box ol {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--text-primary);
+  }
+  .policy-box li { margin-bottom: 4px; }
+
+  .conclusion-box {
+    background: var(--surface-1);
+    border: 2px solid var(--series-1);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 30px;
+  }
+  .conclusion-box .conclusion-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--series-1);
+    margin-bottom: 12px;
+    letter-spacing: .02em;
+  }
+  .conclusion-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .conclusion-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: var(--text-primary);
+  }
+  .conclusion-num {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--series-1);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .conclusion-item strong { font-weight: 700; }
+  .conclusion-item .ng-word { color: var(--status-critical); font-weight: 700; }
+
+  /* ★サンプル注記バナー */
+  .sample-banner {
+    background: var(--sample-bg);
+    border: 1.5px solid var(--sample-border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 22px;
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: var(--sample-ink);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<div class="viz-root wrap">
+  <div class="sample-banner">
+    ※本ページはデザイン確認用のサンプルです。掲載している数値・キャンペーン名はすべて仮のものであり、実際の広告成果ではありません。実データは別途、社内共有（Chatwork等）でお渡ししています。
+  </div>
+
+  <h1>広告配信実績レポート（サンプル）</h1>
+  <p class="subtitle">キャンペーン「（サンプル）キャンペーンA」／消化額・インプレッション・リンククリックの推移（Day1〜Day5・仮の期間）</p>
+
+  <div class="conclusion-box">
+    <div class="conclusion-title">結論（詳細は下記参照）※サンプル値</div>
+    <ol class="conclusion-list">
+      <li class="conclusion-item">
+        <span class="conclusion-num">1</span>
+        <span>資料請求は<strong>0件</strong>だったが、クリック→LP到達は問題なし（LP到達がクリック数を上回る想定）。
+        最大の問題は<span class="ng-word">「LPに来た人がほぼ何も見ずに離脱している」</span>こと
+        （直帰率60%台後半〜70%台後半・平均滞在15秒前後・フォーム開始0件／いずれもサンプル値）。</span>
+      </li>
+      <li class="conclusion-item">
+        <span class="conclusion-num">2</span>
+        <span>目標設定（リンククリック数の最大化）とLPデザインが同時期に変わっているため完全な原因切り分けはできていないが、
+        過去実績との比較から<strong>「クリックしやすい人を集める設定」が資料請求という目的と噛み合っていなかった可能性が高い。</strong></span>
+      </li>
+      <li class="conclusion-item">
+        <span class="conclusion-num">3</span>
+        <span>次回は<strong>「予算を確保してリード数の最大化に固定」「配信中の設定変更をしない」</strong>ことを提案する
+        （詳細は末尾「次回配信への提案」参照）。</span>
+      </li>
+    </ol>
+  </div>
+
+  <!-- サマリー（サンプル値） -->
+  <div class="summary">
+    <div class="summary-card">
+      <div class="label">消化額（5日間合計・サンプル）</div>
+      <div class="value">¥8,100</div>
+    </div>
+    <div class="summary-card">
+      <div class="label">リーチ（サンプル）</div>
+      <div class="value">9,000</div>
+    </div>
+    <div class="summary-card">
+      <div class="label">インプレッション（サンプル）</div>
+      <div class="value">11,600</div>
+    </div>
+    <div class="summary-card">
+      <div class="label">リンククリック（サンプル）</div>
+      <div class="value">500</div>
+    </div>
+  </div>
+  <div class="summary" style="grid-template-columns: 1fr;">
+    <div class="summary-card lead">
+      <div class="label">資料請求（generate_lead・サンプル）</div>
+      <div class="value">0件（全期間を通じて）</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span class="legend-item"><span class="legend-swatch normal"></span>正常配信日</span>
+    <span class="legend-item"><span class="legend-swatch issue"></span>切替後も配信されず（Day4）</span>
+  </div>
+
+  <!-- 消化額 -->
+  <div class="chart-block">
+    <div class="chart-title">消化額（円）※サンプル値</div>
+    <div class="chart-note">通算予算¥10,000のうち、5日間で¥8,100を消化（サンプル値）</div>
+    <div class="bars" id="spend-bars"></div>
+    <div class="axis-labels" id="spend-axis"></div>
+  </div>
+
+  <!-- インプレッション -->
+  <div class="chart-block">
+    <div class="chart-title">インプレッション（回）※サンプル値</div>
+    <div class="chart-note">広告が実際に表示された回数（サンプル値）</div>
+    <div class="bars" id="imp-bars"></div>
+    <div class="axis-labels" id="imp-axis"></div>
+  </div>
+
+  <!-- リンククリック -->
+  <div class="chart-block">
+    <div class="chart-title">リンククリック（回）※サンプル値</div>
+    <div class="chart-note">5日間合計500クリック（サンプル値）／LP到達 サンプル値</div>
+    <div class="bars" id="click-bars"></div>
+    <div class="axis-labels" id="click-axis"></div>
+  </div>
+
+  <table class="data-table">
+    <caption>日別実績データ（表形式・サンプル値）</caption>
+    <thead>
+      <tr><th>日付</th><th>消化額</th><th>インプレッション</th><th>リンククリック</th><th>CTR</th><th>備考</th></tr>
+    </thead>
+    <tbody id="table-body"></tbody>
+  </table>
+
+  <!-- 配信トラブル日の経緯（サンプルシナリオ） -->
+  <div class="incident-box">
+    <div class="incident-title">Day4に何が起きていたか（経緯・サンプルシナリオ）</div>
+    <ol>
+      <li>Day1〜3は既存の広告セット（当初はリンククリック数の最大化目標）で配信が進んでいた（想定）</li>
+      <li>より確度の高いリード獲得を狙うため、<strong>広告セットをリード数の最大化に
+        切り替えて設定し直した</strong>（サンプル：新規広告セットB）</li>
+      <li><strong>切り替えて対応したにもかかわらず、Day4は一度も配信されなかった</strong>
+        （消化¥0・インプレッション0のまま終日推移／想定シナリオ）</li>
+      <li>原因調査の結果、同じキャンペーン内に残っていた他の広告セットと最適化目標が
+        揃っていなかったこと等が影響していた可能性が高いと判明（想定）</li>
+      <li>Day5、原因に対応したうえで配信を再開し、駆け込みで残り予算を消化した（想定）</li>
+    </ol>
+  </div>
+
+  <p class="footnote">
+    本ページの数値はすべてサンプル値であり、実際の広告成果ではありません。レイアウト・構成・文言のデザイン確認用としてご覧ください。
+    実データ（実際の消化額・セッション数・直帰率等）は、別途社内共有（Chatwork等）にてお渡ししています。
+  </p>
+
+  <div class="section-divider"><span>結果まとめ・今後への提案</span></div>
+
+  <!-- 獲得ファネル（サンプル値） -->
+  <div class="chart-block" style="margin-top: 0;">
+    <div class="chart-title">獲得ファネル（クリック→LP到達→フォーム開始→資料請求）※サンプル値</div>
+    <div class="chart-note">サンプル値（キャンペーンA、Day1〜5合計）。各バーの幅は最大値（LP到達540）を基準に表示</div>
+    <div class="funnel" id="funnel"></div>
+  </div>
+
+  <!-- 調べて分かったこと（○×・サンプル） -->
+  <div class="chart-block">
+    <div class="chart-title">調べて分かったこと（サンプル）</div>
+    <div class="chart-note">レポートの見せ方サンプルです。項目・結果の文言は実際の調査結果の型を踏襲した仮の内容です</div>
+    <table class="data-table findings-table">
+      <thead>
+        <tr><th style="width:34px;"></th><th>確認項目</th><th style="text-align:left;">結果</th></tr>
+      </thead>
+      <tbody id="findings-body"></tbody>
+    </table>
+  </div>
+
+  <!-- 原因の切り分けの限界 -->
+  <div class="limitation-box">
+    <div class="limitation-title">原因の切り分けについて（正直な限界）</div>
+    今回は「広告の最適化目標（リンククリック数の最大化→リード数の最大化）」と「LPのデザイン（新デザインへの入れ替え、
+    さらに途中でのセクション入れ替え）」が同じ期間内に同時に変わっているため、どちらが早期離脱の主因かを完全に
+    切り分けることはできていません。上記の「調べて分かったこと」は、確認できた個別の事実であり、
+    「LPでの早期離脱」という最大の問題についても、目標設定とLPデザインのどちらがどの程度寄与しているかまでは
+    特定できていない、という前提でお読みください。
+  </div>
+
+  <!-- 次回配信への提案（今後の方針） -->
+  <div class="policy-box">
+    <div class="policy-title">次回配信への提案（今後の方針） <span class="approved-tag">デザイン確認用</span></div>
+    <p style="font-size:12px; color: var(--text-secondary); margin: 0 0 10px; line-height: 1.8;">
+      上記「原因の切り分けの限界」を踏まえ、次回同種のリード獲得広告を実施する際は、以下の設計方針で進めることを提案します。
+    </p>
+    <ol>
+      <li>目標は最初から「リード数の最大化」に固定することを提案します（配信中の目標変更はしない）</li>
+      <li>予算は最低1日あたりの最適化必要ラインを確保できる規模にすることを提案します（不足する場合は、通算予算を増やすのではなく
+        期間を短縮して集中投下する）</li>
+      <li>LPは実績のあるページを基本とすることを提案します。新デザインを使う場合は、いきなり全配信に使うのではなく
+        A/Bテスト設計にすることを提案します</li>
+      <li>配信中の目標変更・広告セットの作り直しは行わないことを提案します（今回のトラブルの主因と考えられるため）</li>
+      <li>次回実施が決まった段階で、上記1〜4を含む設計案を事前に固めてから配信することを提案します</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+(function () {
+  const data = [
+    { date: "Day1", spend: 2000, imp: 3000, click: 150, issue: false },
+    { date: "Day2", spend: 1500, imp: 2200, click: 110, issue: false },
+    { date: "Day3", spend: 600,  imp: 900,  click: 40,  issue: false },
+    { date: "Day4", spend: 0,    imp: 0,    click: 0,   issue: true  },
+    { date: "Day5", spend: 4000, imp: 5500, click: 200, issue: false },
+  ];
+  function ctr(d) {
+    return d.imp > 0 ? ((d.click / d.imp) * 100).toFixed(2) + "%" : "—";
+  }
+
+  function renderChart(barsEl, axisEl, key, formatter) {
+    const max = Math.max(...data.map(d => d[key]));
+    barsEl.innerHTML = "";
+    axisEl.innerHTML = "";
+
+    data.forEach(d => {
+      const col = document.createElement("div");
+      col.className = "bar-col" + (d.issue ? " issue" : "");
+
+      if (d.issue) {
+        const label = document.createElement("div");
+        label.className = "issue-label";
+        label.textContent = "切替後も未配信";
+        col.appendChild(label);
+
+        const marker = document.createElement("div");
+        marker.className = "issue-marker";
+        marker.innerHTML = '<span class="dot"></span><span>' + formatter(d[key]) + '</span>';
+        col.appendChild(marker);
+
+        const bar = document.createElement("div");
+        bar.className = "bar";
+        bar.style.height = "2px";
+        bar.title = d.date + "：" + formatter(d[key]) + "（リード最大化に切替後も配信されず・サンプル）";
+        col.appendChild(bar);
+      } else {
+        const valueLabel = document.createElement("div");
+        valueLabel.className = "bar-value";
+        valueLabel.textContent = formatter(d[key]);
+        col.appendChild(valueLabel);
+
+        const bar = document.createElement("div");
+        bar.className = "bar";
+        const pct = max > 0 ? (d[key] / max) * 100 : 0;
+        bar.style.height = "calc(" + pct + "% - 20px)";
+        bar.title = d.date + "：" + formatter(d[key]) + "（サンプル値）";
+        col.appendChild(bar);
+      }
+
+      barsEl.appendChild(col);
+
+      const axisLabel = document.createElement("div");
+      axisLabel.className = "axis-label";
+      axisLabel.innerHTML = '<span class="date">' + d.date + '</span>';
+      axisEl.appendChild(axisLabel);
+    });
+  }
+
+  renderChart(
+    document.getElementById("spend-bars"),
+    document.getElementById("spend-axis"),
+    "spend",
+    v => "¥" + v.toLocaleString()
+  );
+  renderChart(
+    document.getElementById("imp-bars"),
+    document.getElementById("imp-axis"),
+    "imp",
+    v => v.toLocaleString()
+  );
+  renderChart(
+    document.getElementById("click-bars"),
+    document.getElementById("click-axis"),
+    "click",
+    v => v.toLocaleString()
+  );
+
+  const tbody = document.getElementById("table-body");
+  data.forEach(d => {
+    const tr = document.createElement("tr");
+    tr.innerHTML =
+      "<td>" + d.date + "</td>" +
+      "<td>¥" + d.spend.toLocaleString() + "</td>" +
+      "<td>" + d.imp.toLocaleString() + "</td>" +
+      "<td>" + d.click.toLocaleString() + "</td>" +
+      "<td>" + ctr(d) + "</td>" +
+      "<td" + (d.issue ? ' class="issue-cell"' : "") + ">" +
+      (d.issue ? "切替後も未配信（不具合・サンプル）" : "正常配信（サンプル）") + "</td>";
+    tbody.appendChild(tr);
+  });
+
+  // 獲得ファネル（サンプル値）
+  const funnelStages = [
+    { name: "リンククリック", value: 500, source: "サンプル値（広告管理画面想定）", delta: null },
+    { name: "LP到達（セッション）", value: 540, source: "サンプル値（GA4想定）", delta: { text: "前段階の108%（クリック数を上回る想定＝クリックからの技術的な離脱なし、というシナリオ）", warn: false } },
+    { name: "フォーム開始（form_start）", value: 0, source: "サンプル値（該当イベントなしの想定）", delta: { text: "前段階（540件）から0件。着地後にフォーム入力へ進んだ人が1人もいなかった、というシナリオ", warn: true } },
+    { name: "資料請求（generate_lead）", value: 0, source: "サンプル値（該当イベントなしの想定）", delta: { text: "フォーム開始が0件のため、資料請求も必然的に0件", warn: false } },
+  ];
+  const funnelMax = Math.max(...funnelStages.map(s => s.value));
+  const funnelEl = document.getElementById("funnel");
+  funnelStages.forEach(s => {
+    const row = document.createElement("div");
+    row.className = "funnel-row";
+
+    const head = document.createElement("div");
+    head.className = "funnel-head";
+    head.innerHTML =
+      '<span class="stage-name">' + s.name + '</span>' +
+      '<span class="stage-value">' + s.value.toLocaleString() + '件</span>';
+    row.appendChild(head);
+
+    const track = document.createElement("div");
+    track.className = "funnel-track";
+    const bar = document.createElement("div");
+    if (s.value === 0) {
+      bar.className = "funnel-bar zero";
+    } else {
+      bar.className = "funnel-bar";
+      const pct = funnelMax > 0 ? (s.value / funnelMax) * 100 : 0;
+      bar.style.width = pct + "%";
+    }
+    bar.title = s.name + "：" + s.value.toLocaleString() + "件（" + s.source + "）";
+    track.appendChild(bar);
+    row.appendChild(track);
+
+    const note = document.createElement("div");
+    note.className = "funnel-delta";
+    note.textContent = s.source + (s.delta ? "　｜　" + s.delta.text : "");
+    if (s.delta && s.delta.warn) note.classList.add("warn");
+    row.appendChild(note);
+
+    funnelEl.appendChild(row);
+  });
+
+  // 調べて分かったこと（○×・サンプル）
+  const findings = [
+    { mark: "○", cls: "ok", item: "クリック→LP到達", result: "問題なし（LP到達がクリック数を上回る想定＝技術的な離脱は確認されず／サンプル）" },
+    { mark: "○", cls: "ok", item: "広告とLPのビジュアル整合性", result: "問題なし（動画の建物・色味・訴求とLPファーストビューが一致することを確認、という想定／サンプル）" },
+    { mark: "○", cls: "ok", item: "フォームのUX", result: "問題なし（入力項目は名前・メールの2つのみ、電話番号等の負荷なし／サンプル）" },
+    { mark: "○", cls: "ok", item: "季節要因", result: "根拠薄い（過去の同条件配信と比較しても季節が主要因とは言えない、という想定／サンプル）" },
+    { mark: "△", cls: "warn", item: "Day4の配信不具合", result: "配信停止あり（切替対応後もDay4は終日配信されず消化¥0・imp0、という想定シナリオ）" },
+    { mark: "×", cls: "ng", item: "LPでの早期離脱", result: "最大の問題（直帰率60%台後半〜70%台後半・平均滞在15秒前後・フォーム開始0件／いずれもサンプル値）" },
+  ];
+  const findingsBody = document.getElementById("findings-body");
+  findings.forEach(f => {
+    const tr = document.createElement("tr");
+    tr.innerHTML =
+      '<td class="mark ' + f.cls + '">' + f.mark + '</td>' +
+      "<td>" + f.item + "</td>" +
+      '<td style="text-align:left;">' + f.result + "</td>";
+    findingsBody.appendChild(tr);
+  });
+})();
+</script>
+</body>
+</html>
