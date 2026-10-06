@@ -143,19 +143,28 @@
  .hero-impact-figcaption{padding:0 20px 12px;font-size:10px}
 }
 /* ▲▲▲ 追加ここまで ▲▲▲ */
+
+/* 2026-10-06: names share a row height; prices align across the three cards. */
+@media(min-width:901px){.price-case-name{min-height:3.2em}.price-case-spec{min-height:3.6em}}
+.plan-offer{max-width:920px;margin:36px auto 0;padding:32px;background:#fff;border:1px solid var(--line);text-align:left;display:grid;grid-template-columns:170px 1fr;gap:32px;align-items:center}
+.plan-offer img{width:170px;box-shadow:0 8px 22px #19374722}.plan-offer h3{font-size:24px;margin:8px 0 12px}.plan-offer p{font-size:14px}.plan-offer .eyebrow{font-size:11px}.plan-offer .small{font-size:12px;color:var(--muted);margin-top:12px}
+.local-review{padding:10px 20px;background:#193747;color:white;text-align:center;font-size:12px}
+@media(max-width:700px){.plan-offer{padding:24px;grid-template-columns:1fr;gap:22px}.plan-offer img{width:170px;margin:auto}.plan-offer h3{font-size:21px}}
+@media(max-width:700px){.plan-offer h3{font-size:19px}.plan-offer p:not(.eyebrow) br{display:none}.nav-catalog{max-width:190px}.skip-link:not(:focus){visibility:hidden}}
+.local-review{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:center;padding:16px 20px;line-height:1.8}.local-review>a{font-size:14px;text-decoration:underline;text-underline-offset:4px;font-weight:600}.local-review small{font-size:11px;flex-basis:100%}@media(max-width:700px){.local-review{gap:5px;padding:14px 18px}.local-review>span{flex-basis:100%}.local-review>a{font-size:13px}.local-review small{font-size:10px}}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KCDJC3R8');</script>
 <!-- End Google Tag Manager -->
 </head>
-<body>
+<body><aside class="local-review" aria-label="ご確認用カタログ"><span>中野様 ご確認用</span><a href="floor-plan-collection.pdf" target="_blank" rel="noopener">間取り実例集を見る（3事例・8ページ／PDF） ↗</a><small>確認用モックアップです。資料請求フォームからの送信は行いません。</small></aside>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCDJC3R8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <a class="skip-link" href="#main">本文へ移動</a>
 <header class="site-header">
  <a class="brand" href="#top" aria-label="FB HOME ページ先頭へ">FB HOME<span>CALIFORNIA STYLE</span></a>
- <nav aria-label="ページ内ナビゲーション"><a class="nav-story" href="#stories">暮らしの風景</a><a class="nav-catalog" href="#catalog">無料の実例集を受け取る <span aria-hidden="true">↗</span></a></nav>
+ <nav aria-label="ページ内ナビゲーション"><a class="nav-story" href="#stories">暮らしの風景</a><a class="nav-catalog" href="#catalog">無料資料を受け取る <span aria-hidden="true">→</span></a></nav>
 </header>
 <main id="main">
 <section class="hero-impact" id="top" aria-labelledby="hero-title">
@@ -167,7 +176,7 @@
   <p class="hero-impact-badge">建築実例／ご成約済み</p>
   <p class="eyebrow">REAL CASE &amp; PRICE</p>
   <h1 id="hero-title">この価格で、<br>ここまで建てられた。</h1>
-  <a href="#catalog" class="button button-light hero-impact-cta">全18ページの<wbr>施工実例集を<wbr>無料で受け取る <span aria-hidden="true">→</span></a>
+  <a href="#catalog" class="button button-light hero-impact-cta">施工実例集と<wbr>間取り集を<wbr>無料で受け取る <span aria-hidden="true">→</span></a>
  </div>
 </section>
 <p class="hero-impact-figcaption">福岡ビルド 施工実例（二丈上深江）／施工実例集より</p>
@@ -233,13 +242,14 @@
 
  </div>
 
+ <div class="plan-offer"><img src="images/floorplan-book-cover.jpg" alt="別冊 間取り実例集の表紙" width="842" height="595" loading="lazy"><div><p class="eyebrow">SPECIAL BOOKLET / 資料請求特典</p><h3>写真の、その先へ。<br>間取りから、<wbr>暮らしをイメージ。</h3><p>カリフォルニアスタイルの施工実例集に加えて、<br>糸島の平屋、ネイビー、ホワイトの3つの住まいを紹介する<br>「間取り実例集」全8ページもお届けします。</p><p class="small">外観写真・各階の平面図・間取りの見どころを一冊に。<br>掲載の3棟は成約済みの参考実例です。平面図は資料請求後のメールでご案内します。</p></div></div>
  <div class="price-cases-cta">
-  <a href="#catalog" class="button button-light">実例集で、ほかの事例も見る <span aria-hidden="true">→</span></a>
+  <a href="#catalog" class="button button-light">実例集と間取り集を無料で受け取る <span aria-hidden="true">→</span></a>
  </div>
 </section>
 <!-- ▲▲▲ 追加ここまで ▲▲▲ -->
-<section class="book-section" id="book" aria-labelledby="book-title"><div class="book-heading"><p class="eyebrow">TAKE A CLOSER LOOK</p><h2 id="book-title">この暮らしの続きを、<br>一冊に。</h2><p>写真のそばに、住まいの工夫を添えて。<br>全18ページの施工実例集を、無料でお届けします。</p></div>
-<div class="book-content"><figure class="cover"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-01.png" alt="CALIFORNIA STYLE 施工実例集の実際の表紙" width="833" height="1179" loading="lazy"><figcaption>CALIFORNIA STYLE<br>施工実例集／PDF・全18ページ</figcaption></figure><div class="book-inside"><div class="sample-heading"><p>実際の誌面を、少しだけ。</p><span>タップで拡大</span></div><div class="sample-pages"><button data-photo="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-06.png" data-caption="施工実例集 P.06／カバードポーチ" class="page-zoom"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-06.png" alt="施工実例集6ページ カバードポーチの誌面" width="833" height="1179" loading="lazy"><span>P.06 — PORCH <i aria-hidden="true">＋</i></span></button><button data-photo="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-10.png" data-caption="施工実例集 P.10／キッチン" class="page-zoom"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-10.png" alt="施工実例集10ページ キッチンの誌面" width="833" height="1179" loading="lazy"><span>P.10 — KITCHEN <i aria-hidden="true">＋</i></span></button></div><p class="contents">外観・ポーチ・リビング・キッチン・寝室<br>家事スペース・収納・性能と保証</p><a href="#catalog" class="button button-light">全18ページの実例集を受け取る <span aria-hidden="true">→</span></a><p class="book-note">無料 ／ PDFをメールでご案内</p></div></div>
+<section class="book-section" id="book" aria-labelledby="book-title"><div class="book-heading"><p class="eyebrow">TAKE A CLOSER LOOK</p><h2 id="book-title">この暮らしの続きを、<br>一冊に。</h2><p>写真のそばに、住まいの工夫を添えて。<br>全18ページの施工実例集に、別冊「間取り実例集」全8ページを添えて。<br>2冊のPDFを、無料でお届けします。</p></div>
+<div class="book-content"><figure class="cover"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-01.png" alt="CALIFORNIA STYLE 施工実例集の実際の表紙" width="833" height="1179" loading="lazy"><figcaption>CALIFORNIA STYLE<br>施工実例集／PDF・全18ページ</figcaption></figure><div class="book-inside"><div class="sample-heading"><p>実際の誌面を、少しだけ。</p><span>タップで拡大</span></div><div class="sample-pages"><button data-photo="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-06.png" data-caption="施工実例集 P.06／カバードポーチ" class="page-zoom"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-06.png" alt="施工実例集6ページ カバードポーチの誌面" width="833" height="1179" loading="lazy"><span>P.06 — PORCH <i aria-hidden="true">＋</i></span></button><button data-photo="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-10.png" data-caption="施工実例集 P.10／キッチン" class="page-zoom"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-10.png" alt="施工実例集10ページ キッチンの誌面" width="833" height="1179" loading="lazy"><span>P.10 — KITCHEN <i aria-hidden="true">＋</i></span></button></div><p class="contents">外観・ポーチ・リビング・キッチン・寝室<br>家事スペース・収納・性能と保証</p><a href="#catalog" class="button button-light">実例集と間取り集を受け取る <span aria-hidden="true">→</span></a><p class="book-note">無料 ／ PDF2冊をメールでご案内</p></div></div>
 </section>
 <section class="intro" aria-labelledby="intro-title">
  <p class="eyebrow">MAKE YOURSELF AT HOME</p><h2 id="intro-title">どこかへ出かけなくても、<br>好きな時間は、ここにある。</h2>
@@ -278,10 +288,10 @@
 </article>
 </div>
 <section class="request-section" id="catalog-section" aria-labelledby="catalog-title"><div class="request-intro"><p class="eyebrow">FREE CATALOG</p><h2 id="catalog-title">家づくりのはじまりに、<br>好きな一冊を。</h2><p>建てる時期が決まっていなくても。<br>まずは実例を見ながら、<br>好きな暮らしを思い描いてみてください。</p><div class="company-proof"><p>この実例集をつくっているのは、<br><strong>福岡ビルド株式会社です。</strong></p><p>福岡・佐賀で創業53年。設計から施工まで自社で対応しています。<br>福岡・佐賀の住まいづくりをご紹介しています。</p><a href="https://fb-home.jp/" target="_blank" rel="noopener" class="text-link">FB HOMEについて <span aria-hidden="true">↗</span></a></div></div>
-<div class="request-panel" id="catalog"><div class="form-heading"><h3>施工実例集を無料で受け取る</h3><p>全18ページ・PDF ／ メールでリンクをご案内</p></div><noscript><p class="field-hint">お手数ですが、送信にはJavaScriptを有効にしてください。</p></noscript><form id="ct-form" novalidate><div id="error-summary" class="error-summary" role="alert" hidden></div><div class="field"><label for="ct-name">お名前 <span>必須</span></label><input id="ct-name" name="name" autocomplete="name" placeholder="例）山田 花子" maxlength="100" required aria-describedby="name-error"><p id="name-error" class="field-error" hidden></p></div><div class="field"><label for="ct-email">メールアドレス <span>必須</span></label><input id="ct-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="例）name@example.com" maxlength="254" required aria-describedby="email-hint email-error"><p id="email-hint" class="field-hint">こちらのアドレスへ資料のリンクをご案内します。</p><p id="email-error" class="field-error" hidden></p></div><div class="consent"><label for="ct-agree"><input id="ct-agree" name="agree" type="checkbox" value="1" required aria-describedby="agree-error"><span><a href="https://fb-home.jp/privacy-policy/" target="_blank" rel="noopener">個人情報保護方針</a>に同意する</span></label><p id="agree-error" class="field-error" hidden></p></div><button class="button button-dark" type="submit" id="ct-submit" disabled>無料の実例集を受け取る <span aria-hidden="true">→</span></button><p class="form-note">資料は送信後の画面でもご覧いただけます。</p><input type="hidden" id="ct-nonce" value="preview-nonce"><input type="hidden" id="ct-timing" value="情報収集中"></form>
+<div class="request-panel" id="catalog"><div class="form-heading"><h3>実例集と間取り集を無料で受け取る</h3><p>施工実例集18ページ＋間取り実例集8ページ<br>PDF2冊 ／ メールでリンクをご案内</p></div><noscript><p class="field-hint">お手数ですが、送信にはJavaScriptを有効にしてください。</p></noscript><form id="ct-form" novalidate><div id="error-summary" class="error-summary" role="alert" hidden></div><div class="field"><label for="ct-name">お名前 <span>必須</span></label><input id="ct-name" name="name" autocomplete="name" placeholder="例）山田 花子" maxlength="100" required aria-describedby="name-error"><p id="name-error" class="field-error" hidden></p></div><div class="field"><label for="ct-email">メールアドレス <span>必須</span></label><input id="ct-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="例）name@example.com" maxlength="254" required aria-describedby="email-hint email-error"><p id="email-hint" class="field-hint">こちらのアドレスへ資料のリンクをご案内します。</p><p id="email-error" class="field-error" hidden></p></div><div class="consent"><label for="ct-agree"><input id="ct-agree" name="agree" type="checkbox" value="1" required aria-describedby="agree-error"><span><a href="https://fb-home.jp/privacy-policy/" target="_blank" rel="noopener">個人情報保護方針</a>に同意する</span></label><p id="agree-error" class="field-error" hidden></p></div><button class="button button-dark" type="submit" id="ct-submit" disabled>無料の実例集・間取り集を受け取る <span aria-hidden="true">→</span></button><p class="form-note">資料は送信後の画面でもご覧いただけます。</p><input type="hidden" id="ct-nonce" value="preview-nonce"><input type="hidden" id="ct-timing" value="情報収集中"></form>
 <div id="ct-success" hidden tabindex="-1" aria-live="polite"><span class="success-check" aria-hidden="true">✓</span><p class="eyebrow">YOUR PHOTO BOOK</p><h3>暮らしの続きを、<br>お楽しみください。</h3><p>ご登録のメールアドレスへ、資料のリンクをお送りしました。<br>数分経っても届かない場合は、迷惑メールフォルダをご確認ください。</p><a class="button button-dark" href="https://fb-home.jp/wp-content/uploads/2026/07/california-style-jitsureishu.pdf" target="_blank" rel="noopener" id="pdf-download">施工実例集を開く <span aria-hidden="true">↗</span></a><p class="form-note">PDF・全18ページ・約22.5MB</p><button class="reset-form" type="button">フォームの確認に戻る</button></div>
 </div></section>
-<section class="questions" aria-labelledby="questions-title"><p class="eyebrow">BEFORE YOU START</p><h2 id="questions-title">資料請求について</h2><details><summary>資料は無料ですか？</summary><p>無料です。施工実例集はPDF形式でご案内します。郵送の資料ではありません。</p></details><details><summary>家を建てる時期が未定でも、請求できますか？</summary><p>はい。情報収集の段階でもご覧いただけます。このフォームでは建築時期や電話番号の入力は必要ありません。</p></details><details><summary>どのような内容が載っていますか？</summary><p>外観やポーチ、リビング、キッチンなどの実例写真と、性能・保証の説明を掲載した全18ページです。掲載写真は福岡ビルドのモデルハウス・展示場で撮影しています。</p></details></section>
+<section class="questions" aria-labelledby="questions-title"><p class="eyebrow">BEFORE YOU START</p><h2 id="questions-title">資料請求について</h2><details><summary>資料は無料ですか？</summary><p>無料です。施工実例集（18ページ）と別冊の間取り実例集（8ページ）を、PDF形式でメールにてご案内します。郵送の資料ではありません。</p></details><details><summary>家を建てる時期が未定でも、請求できますか？</summary><p>はい。情報収集の段階でもご覧いただけます。このフォームでは建築時期や電話番号の入力は必要ありません。</p></details><details><summary>どのような内容が載っていますか？</summary><p>外観やポーチ、リビング、キッチンなどの実例写真と、性能・保証の説明を掲載した全18ページです。掲載写真は福岡ビルドのモデルハウス・展示場で撮影しています。別冊の間取り実例集では、成約済みの3棟を外観写真・各階の平面図・見どころとともにご紹介します。</p></details></section>
 <section class="visit" aria-labelledby="visit-title"><img src="images/visit-exterior.jpg" alt="福岡ビルド施工実例の外観" loading="lazy"><div><p class="eyebrow">SEE IT IN PERSON</p><h2 id="visit-title">写真の、その先へ。</h2><p>実物の広がりや、素材の手ざわりも。<br>佐賀展示場の見学については、<br>お電話でお問い合わせください。</p><a href="tel:0927101180" class="visit-phone">092-710-1180</a><p class="small">福岡ビルド株式会社／土・日・祝、年末年始定休</p></div></section>
 </main>
 <footer><a href="#top" class="brand">FB HOME<span>CALIFORNIA STYLE</span></a><div><p>福岡ビルド株式会社<br>〒811-1211 福岡県那珂川市今光1丁目56番地</p><a href="https://fb-home.jp/privacy-policy/" target="_blank" rel="noopener">個人情報保護方針</a></div><p class="copyright">© FB HOME</p></footer>
@@ -359,12 +369,18 @@
   const AJAX_URL = 'https://fb-home.jp/wp-admin/admin-ajax.php';
   const restoreButton = (button) => {
     button.disabled = false;
-    button.replaceChildren(document.createTextNode('無料の実例集を受け取る '));
+    button.replaceChildren(document.createTextNode('無料の実例集・間取り集を受け取る '));
     const arrow = document.createElement('span');
     arrow.textContent = '→'; arrow.setAttribute('aria-hidden','true');
     button.append(arrow);
   };
   form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const reviewMessage = document.querySelector('#error-summary');
+    reviewMessage.textContent = '確認用モックアップです。入力内容の送信・メール配信は行いません。本番では施工実例集と間取り実例集の2冊をご案内します。';
+    reviewMessage.hidden = false;
+    return;
+
     e.preventDefault(); if (sending) return; submitted = true;
     const valid = fields.map(validate);
     if (valid.includes(false)) {
@@ -420,14 +436,14 @@
     form.reset(); form.hidden = false; $('#ct-success').hidden = true;
     submitted = false; fields.forEach((field,i) => {field.removeAttribute('aria-invalid'); document.getElementById(errors[i]).hidden = true;});
     summary.hidden = true; $('#ct-submit').disabled = false;
-    $('#ct-submit').replaceChildren(document.createTextNode('無料の実例集を受け取る '));
+    $('#ct-submit').replaceChildren(document.createTextNode('無料の実例集・間取り集を受け取る '));
     const arrow = document.createElement('span'); arrow.textContent = '→'; arrow.setAttribute('aria-hidden','true'); $('#ct-submit').append(arrow);
     $('#ct-name').focus(); updateSticky();
   });
   const sticky = $('.sticky-catalog');
   let queued = false;
   function updateSticky() {
-    const hero = $('.hero').getBoundingClientRect(); const request = $('#catalog').getBoundingClientRect();
+    const hero = $('.hero-impact, .hero').getBoundingClientRect(); const request = $('#catalog').getBoundingClientRect();
     const focusInForm = form.contains(document.activeElement);
     const vh = window.visualViewport?.height || innerHeight;
     const keyboard = window.visualViewport && window.visualViewport.height < innerHeight * .78;
