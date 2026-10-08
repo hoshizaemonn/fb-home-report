@@ -152,6 +152,18 @@
 @media(max-width:700px){.plan-offer{padding:24px;grid-template-columns:1fr;gap:22px}.plan-offer img{width:170px;margin:auto}.plan-offer h3{font-size:21px}}
 @media(max-width:700px){.plan-offer h3{font-size:19px}.plan-offer p:not(.eyebrow) br{display:none}.nav-catalog{max-width:190px}.skip-link:not(:focus){visibility:hidden}}
 .local-review{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:center;padding:16px 20px;line-height:1.8}.local-review>a{font-size:14px;text-decoration:underline;text-underline-offset:4px;font-weight:600}.local-review small{font-size:11px;flex-basis:100%}@media(max-width:700px){.local-review{gap:5px;padding:14px 18px}.local-review>span{flex-basis:100%}.local-review>a{font-size:13px}.local-review small{font-size:10px}}
+
+/* 2026-10-08: 上部CTAに統一し、短い語尾だけの折り返しを抑える。 */
+p{ text-wrap:pretty; }
+.copy-sentence{display:block;text-wrap:balance}
+.book-heading>p:last-child,.form-heading p,.request-intro>p:not(.eyebrow){text-wrap:balance}
+@media(max-width:700px){
+  .price-cases-head .lead{letter-spacing:0;line-height:1.95}
+  .price-cases-head .copy-sentence+.copy-sentence{margin-top:.65em}
+  .book-heading>p:last-child{max-width:28em;margin-inline:auto}
+  .story-copy>p br,.company-proof p br,.questions details p br{display:none}
+  footer{padding-bottom:42px}
+}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KCDJC3R8');</script>
@@ -185,7 +197,7 @@
  <div class="price-cases-head">
   <p class="eyebrow">REAL CASE &amp; PRICE</p>
   <h2 id="price-cases-title">実際に、いくらで<br class="mobile-only">建てられたか。</h2>
-  <p class="lead">過去にご成約いただいた完成事例を、価格とあわせてご紹介します。<br>在庫物件のご案内ではなく、完成した建物の実例です。</p>
+  <p class="lead"><span class="copy-sentence">ご成約済みの完成事例を、価格とともにご紹介します。</span><span class="copy-sentence">在庫物件のご案内ではなく完成した建物の実例です。</span></p>
  </div>
  <div class="price-case-grid">
 
@@ -248,7 +260,7 @@
  </div>
 </section>
 <!-- ▲▲▲ 追加ここまで ▲▲▲ -->
-<section class="book-section" id="book" aria-labelledby="book-title"><div class="book-heading"><p class="eyebrow">TAKE A CLOSER LOOK</p><h2 id="book-title">この暮らしの続きを、<br>一冊に。</h2><p>写真のそばに、住まいの工夫を添えて。<br>全18ページの施工実例集に、別冊「間取り実例集」全8ページを添えて。<br>2冊のPDFを、無料でお届けします。</p></div>
+<section class="book-section" id="book" aria-labelledby="book-title"><div class="book-heading"><p class="eyebrow">TAKE A CLOSER LOOK</p><h2 id="book-title">この暮らしの続きを、<br>一冊に。</h2><p>全18ページの施工実例集に、別冊「間取り実例集」全8ページを添えて。<br>2冊のPDFを、無料でお届けします。</p></div>
 <div class="book-content"><figure class="cover"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-01.png" alt="CALIFORNIA STYLE 施工実例集の実際の表紙" width="833" height="1179" loading="lazy"><figcaption>CALIFORNIA STYLE<br>施工実例集／PDF・全18ページ</figcaption></figure><div class="book-inside"><div class="sample-heading"><p>実際の誌面を、少しだけ。</p><span>タップで拡大</span></div><div class="sample-pages"><button data-photo="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-06.png" data-caption="施工実例集 P.06／カバードポーチ" class="page-zoom"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-06.png" alt="施工実例集6ページ カバードポーチの誌面" width="833" height="1179" loading="lazy"><span>P.06 — PORCH <i aria-hidden="true">＋</i></span></button><button data-photo="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-10.png" data-caption="施工実例集 P.10／キッチン" class="page-zoom"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-page-10.png" alt="施工実例集10ページ キッチンの誌面" width="833" height="1179" loading="lazy"><span>P.10 — KITCHEN <i aria-hidden="true">＋</i></span></button></div><p class="contents">外観・ポーチ・リビング・キッチン・寝室<br>家事スペース・収納・性能と保証</p><a href="#catalog" class="button button-light">実例集と間取り集を受け取る <span aria-hidden="true">→</span></a><p class="book-note">無料 ／ PDF2冊をメールでご案内</p></div></div>
 </section>
 <section class="intro" aria-labelledby="intro-title">
@@ -295,7 +307,7 @@
 <section class="visit" aria-labelledby="visit-title"><img src="images/visit-exterior.jpg" alt="福岡ビルド施工実例の外観" loading="lazy"><div><p class="eyebrow">SEE IT IN PERSON</p><h2 id="visit-title">写真の、その先へ。</h2><p>実物の広がりや、素材の手ざわりも。<br>佐賀展示場の見学については、<br>お電話でお問い合わせください。</p><a href="tel:0927101180" class="visit-phone">092-710-1180</a><p class="small">福岡ビルド株式会社／土・日・祝、年末年始定休</p></div></section>
 </main>
 <footer><a href="#top" class="brand">FB HOME<span>CALIFORNIA STYLE</span></a><div><p>福岡ビルド株式会社<br>〒811-1211 福岡県那珂川市今光1丁目56番地</p><a href="https://fb-home.jp/privacy-policy/" target="_blank" rel="noopener">個人情報保護方針</a></div><p class="copyright">© FB HOME</p></footer>
-<div class="sticky-catalog" hidden><p>CALIFORNIA STYLE<span>施工実例集・全18ページ</span></p><a href="#catalog">無料で受け取る <span aria-hidden="true">→</span></a></div>
+
 <dialog id="photo-dialog" aria-labelledby="photo-caption"><div class="dialog-toolbar"><p id="photo-caption"></p><button type="button" class="dialog-zoom" aria-pressed="false">拡大</button><button type="button" class="dialog-close" aria-label="写真を閉じる">×</button></div><img id="dialog-image" alt=""><p class="dialog-hint">「拡大」で文字を大きくできます。拡大後は縦横にスクロールできます。</p></dialog>
 <script>
 'use strict';
@@ -387,7 +399,7 @@
       summary.textContent = '入力内容をご確認ください。'; summary.hidden = false;
       fields[valid.indexOf(false)].focus(); return;
     }
-    summary.hidden = true; sending = true; updateSticky();
+    summary.hidden = true; sending = true;
     const button = $('#ct-submit'); button.disabled = true; button.textContent = '送信中…';
     // 既存の /catalog/ と同じ受け口（functions.php の fb_home_send_catalog）へ送る。
     // 検討時期はこのLPでは尋ねないため、hidden の既定値（許可済みの値）を送る。
@@ -421,7 +433,7 @@
       window.dataLayer.push({'event': 'generate_lead', 'form_name': 'catalog_request'});
       sending = false; $('#ct-success').focus({preventScroll:true});
       $('#ct-success').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',block:'center'});
-      updateSticky();
+     
     } catch (error) {
       sending = false;
       restoreButton(button);
@@ -429,7 +441,7 @@
         + ' お手数ですが、時間をおいて再度お試しください。';
       summary.hidden = false;
       summary.focus?.();
-      updateSticky();
+     
     }
   });
   $('.reset-form').addEventListener('click', () => {
@@ -438,22 +450,8 @@
     summary.hidden = true; $('#ct-submit').disabled = false;
     $('#ct-submit').replaceChildren(document.createTextNode('無料の実例集・間取り集を受け取る '));
     const arrow = document.createElement('span'); arrow.textContent = '→'; arrow.setAttribute('aria-hidden','true'); $('#ct-submit').append(arrow);
-    $('#ct-name').focus(); updateSticky();
+    $('#ct-name').focus();
   });
-  const sticky = $('.sticky-catalog');
-  let queued = false;
-  function updateSticky() {
-    const hero = $('.hero-impact, .hero').getBoundingClientRect(); const request = $('#catalog').getBoundingClientRect();
-    const focusInForm = form.contains(document.activeElement);
-    const vh = window.visualViewport?.height || innerHeight;
-    const keyboard = window.visualViewport && window.visualViewport.height < innerHeight * .78;
-    sticky.hidden = hero.bottom > 80 || request.top < vh || focusInForm || keyboard || sending || !$('#ct-success').hidden;
-  }
-  const requestUpdate = () => { if(!queued){ queued = true; requestAnimationFrame(() => {queued = false; updateSticky();});} };
-  addEventListener('scroll', requestUpdate, {passive:true}); addEventListener('resize', requestUpdate);
-  form.addEventListener('focusin', requestUpdate); form.addEventListener('focusout', requestUpdate);
-  window.visualViewport?.addEventListener('resize',requestUpdate);
-  updateSticky();
   $('#ct-submit').disabled = false;
 })();
 </script>
