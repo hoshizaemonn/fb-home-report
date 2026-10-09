@@ -186,6 +186,36 @@ p{ text-wrap:pretty; }
  .cover-caption-title,.cover-caption-format{display:block}
  .cover-caption-separator{display:none}
 }
+
+/* 2026-10-09: official FB HOME style lineup before the request form. */
+#kitchen{margin-bottom:0}
+.lp-lineup{padding:100px 6% 110px;background:#fff}
+.lp-lineup-inner{max-width:1200px;margin:auto}
+.lp-lineup-heading{text-align:center;margin-bottom:48px}
+.lp-lineup-heading .eyebrow{color:#6d8590}
+.lp-lineup-heading h2{font-size:32px;letter-spacing:.1em;margin:18px 0 22px;text-wrap:balance}
+.lp-lineup-heading>p:last-child{font-size:15px;line-height:2;color:var(--muted);text-wrap:balance}
+.lp-style-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:42px 28px}
+.lp-style-card{min-width:0;background:#f5f8f9}
+.lp-style-card figure{position:relative;margin:0}
+.lp-style-card img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.lp-style-card figcaption{position:absolute;bottom:0;left:0;background:var(--navy);color:white;font:11px/1.4 Arial,sans-serif;letter-spacing:.12em;padding:9px 13px}
+.lp-style-card:last-child figcaption{background:#395348}
+.lp-style-copy{padding:23px 24px 27px}
+.lp-style-en{font:12px/1.6 Arial,sans-serif;letter-spacing:.08em;color:#617b87}
+.lp-style-copy h3{font-size:21px;line-height:1.6;letter-spacing:.02em;margin:8px 0 16px;text-wrap:balance}
+.lp-style-desc{font-size:14px;line-height:1.95;color:var(--muted);text-wrap:pretty;line-break:strict}
+@media(max-width:1050px){.lp-style-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 24px}}
+@media(max-width:600px){
+ .lp-lineup{padding:64px 24px 70px}
+ .lp-lineup-heading{margin-bottom:34px}
+ .lp-lineup-heading h2{font-size:24px;letter-spacing:.025em}
+ .lp-lineup-heading>p:last-child{font-size:14px}
+ .lp-style-grid{grid-template-columns:1fr;gap:28px}
+ .lp-style-copy{padding:21px 22px 24px}
+ .lp-style-copy h3{font-size:22px;margin-bottom:13px}
+ .lp-style-desc{text-wrap:balance}
+}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KCDJC3R8');</script>
@@ -321,6 +351,7 @@ p{ text-wrap:pretty; }
  <div id="kitchen-detail" class="story-detail" hidden><div class="detail-grid"><figure><button class="photo-zoom" data-photo="https://fb-home.jp/wp-content/uploads/2026/09/ad-sagatenjijo-kitchen.webp" data-caption="佐賀展示場／ブルーのタイルとオープンシェルフ" aria-label="佐賀展示場のキッチンを拡大"><img src="https://fb-home.jp/wp-content/uploads/2026/09/ad-sagatenjijo-kitchen.webp" alt="佐賀展示場のブルーのタイルとオープンシェルフ" width="1200" height="900" loading="lazy"><span>写真を拡大 ↗</span></button><figcaption>佐賀展示場／実写真</figcaption></figure><div><p class="eyebrow">ANOTHER VIEW</p><h3>しまうだけでなく、<br>飾る楽しみも。</h3><p>ブルーのタイルに、オープンシェルフ。素材や色の組み合わせで、キッチンの表情も変わります。実例集では家事スペースや収納もご紹介しています。</p><a href="#catalog" class="text-link">実例集で、ほかの風景も見る <span aria-hidden="true">→</span></a></div></div></div>
 </article>
 </div>
+<section class="lp-lineup" id="style-lineup" aria-labelledby="style-lineup-title"><div class="lp-lineup-inner"><header class="lp-lineup-heading"><p class="eyebrow">OUR STYLES</p><h2 id="style-lineup-title">スタイルラインナップ</h2><p><span class="copy-line">FB HOMEが提案する6つのバリエーション。</span><span class="copy-line">お好みのライフスタイルに合わせた住まいを、</span><span class="copy-line">それぞれの個性で実現します。</span></p></header><div class="lp-style-grid"><article class="lp-style-card"><figure><img src="https://fb-home.jp/wp-content/themes/fb-home-theme/img/surfers-house.webp" alt="サーファーズハウスの外観" loading="lazy" width="900" height="600"><figcaption>CALIFORNIA</figcaption></figure><div class="lp-style-copy"><p class="lp-style-en">SURFER&#x27;S HOUSE</p><h3>サーファーズハウス</h3><p class="lp-style-desc">波と共に生きる海辺のライフスタイルをそのまま住まいに。ボードもバイクも似合う、自由な暮らしの家。</p></div></article><article class="lp-style-card"><figure><img src="https://fb-home.jp/wp-content/themes/fb-home-theme/img/new-california.webp" alt="オーシャンフローの外観" loading="lazy" width="900" height="600"><figcaption>CALIFORNIA</figcaption></figure><div class="lp-style-copy"><p class="lp-style-en">OCEAN FLOW</p><h3>オーシャンフロー</h3><p class="lp-style-desc">海のゆったりした風の流れを家の中にも。カリフォルニアの開放感に、洗練されたモダンデザインが融合した住まい。</p></div></article><article class="lp-style-card"><figure><img src="https://fb-home.jp/wp-content/themes/fb-home-theme/img/american-house.webp" alt="アメリカンハウスの外観" loading="lazy" width="900" height="600"><figcaption>CALIFORNIA</figcaption></figure><div class="lp-style-copy"><p class="lp-style-en">AMERICAN HOUSE</p><h3>アメリカンハウス</h3><p class="lp-style-desc">クラシックなアメリカンスタイルの風格と、大らかな住まい心地。ゆとりある暮らしを体現する家。</p></div></article><article class="lp-style-card"><figure><img src="https://fb-home.jp/wp-content/themes/fb-home-theme/img/one-story-house.webp" alt="ワンストーリーハウスの外観" loading="lazy" width="900" height="600"><figcaption>CALIFORNIA</figcaption></figure><div class="lp-style-copy"><p class="lp-style-en">ONE STORY HOUSE</p><h3>ワンストーリーハウス</h3><p class="lp-style-desc">すべての暮らしがひとつの階にまとまる平屋スタイル。フラットな動線で老後も安心の住まい。</p></div></article><article class="lp-style-card"><figure><img src="https://fb-home.jp/wp-content/themes/fb-home-theme/img/flat-roof-house.webp" alt="フラットルーフハウスの外観" loading="lazy" width="900" height="600"><figcaption>CALIFORNIA</figcaption></figure><div class="lp-style-copy"><p class="lp-style-en">FLAT ROOF HOUSE</p><h3>フラットルーフハウス</h3><p class="lp-style-desc">フラットな屋根ラインが生み出すクールでシャープな外観。スタイリッシュさを求める方へ。</p></div></article><article class="lp-style-card"><figure><img src="https://fb-home.jp/wp-content/themes/fb-home-theme/img/lineup-uminaka.webp" alt="ガレージスタイルの外観" loading="lazy" width="900" height="600"><figcaption>GARAGE</figcaption></figure><div class="lp-style-copy"><p class="lp-style-en">GARAGE STYLE</p><h3>ガレージスタイル</h3><p class="lp-style-desc">愛車と暮らす、趣味が映える家。ビルトインガレージが生活動線の中心になる新しいライフスタイル。</p></div></article></div></div></section>
 <section class="request-section" id="catalog-section" aria-labelledby="catalog-title"><div class="request-intro"><p class="eyebrow">FREE CATALOG</p><h2 id="catalog-title">家づくりのはじまりに、<br>好きな一冊を。</h2><p>建てる時期が決まっていなくても。<br>まずは実例を見ながら、<br>好きな暮らしを思い描いてみてください。</p><div class="company-proof"><p>この実例集をつくっているのは、<br><strong>福岡ビルド株式会社です。</strong></p><p>福岡・佐賀で創業53年。設計から施工まで自社で対応しています。<br>福岡・佐賀の住まいづくりをご紹介しています。</p><a href="https://fb-home.jp/" target="_blank" rel="noopener" class="text-link">FB HOMEについて <span aria-hidden="true">↗</span></a></div></div>
 <div class="request-panel" id="catalog"><div class="form-heading"><h3><span class="copy-phrase">実例集と間取り集を</span><span class="copy-phrase">無料で受け取る</span></h3><p><span class="copy-line"><span class="copy-phrase">施工実例集18ページ</span><span class="copy-phrase">＋間取り実例集8ページ</span></span><span class="copy-line"><span class="copy-phrase">PDF2冊 ／ </span><span class="copy-phrase">メールでリンクをご案内</span></span></p></div><noscript><p class="field-hint">お手数ですが、送信にはJavaScriptを有効にしてください。</p></noscript><form id="ct-form" novalidate><div id="error-summary" class="error-summary" role="alert" hidden></div><div class="field"><label for="ct-name">お名前 <span>必須</span></label><input id="ct-name" name="name" autocomplete="name" placeholder="例）山田 花子" maxlength="100" required aria-describedby="name-error"><p id="name-error" class="field-error" hidden></p></div><div class="field"><label for="ct-email">メールアドレス <span>必須</span></label><input id="ct-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="例）name@example.com" maxlength="254" required aria-describedby="email-hint email-error"><p id="email-hint" class="field-hint">こちらのアドレスへ資料のリンクをご案内します。</p><p id="email-error" class="field-error" hidden></p></div><div class="consent"><label for="ct-agree"><input id="ct-agree" name="agree" type="checkbox" value="1" required aria-describedby="agree-error"><span><a href="https://fb-home.jp/privacy-policy/" target="_blank" rel="noopener">個人情報保護方針</a>に同意する</span></label><p id="agree-error" class="field-error" hidden></p></div><button class="button button-dark" type="submit" id="ct-submit" disabled>無料で2冊を受け取る <span aria-hidden="true">→</span></button><p class="form-note">資料は送信後の画面でもご覧いただけます。</p><input type="hidden" id="ct-nonce" value="preview-nonce"><input type="hidden" id="ct-timing" value="情報収集中"></form>
 <div id="ct-success" hidden tabindex="-1" aria-live="polite"><span class="success-check" aria-hidden="true">✓</span><p class="eyebrow">YOUR PHOTO BOOK</p><h3>暮らしの続きを、<br>お楽しみください。</h3><p>ご登録のメールアドレスへ、資料のリンクをお送りしました。<br>数分経っても届かない場合は、迷惑メールフォルダをご確認ください。</p><a class="button button-dark" href="https://fb-home.jp/wp-content/uploads/2026/07/california-style-jitsureishu.pdf" target="_blank" rel="noopener" id="pdf-download">施工実例集を開く <span aria-hidden="true">↗</span></a><p class="form-note">PDF・全18ページ・約22.5MB</p><button class="reset-form" type="button">フォームの確認に戻る</button></div>
