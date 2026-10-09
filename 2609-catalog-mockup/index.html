@@ -216,6 +216,20 @@ p{ text-wrap:pretty; }
  .lp-style-copy h3{font-size:22px;margin-bottom:13px}
  .lp-style-desc{text-wrap:balance}
 }
+
+/* Match the official site's reveal and pointer-hover motion. */
+.lp-style-card{transition:opacity .7s ease,transform .7s ease,box-shadow .3s ease}
+.lp-style-card figure{overflow:hidden}
+.lp-style-card img{transition:transform .5s ease}
+.lp-style-card.lp-reveal-pending{opacity:0;transform:translateY(30px)}
+@media(hover:hover) and (pointer:fine){
+ .lp-style-card:not(.lp-reveal-pending):hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(44,74,85,.15)}
+ .lp-style-card:hover img{transform:scale(1.05)}
+}
+@media(prefers-reduced-motion:reduce){
+ .lp-style-card,.lp-style-card img{transition:none!important;transform:none!important}
+ .lp-style-card.lp-reveal-pending{opacity:1}
+}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KCDJC3R8');</script>
@@ -243,7 +257,7 @@ p{ text-wrap:pretty; }
   <a href="#catalog" class="button button-light hero-impact-cta">施工実例集と<wbr>間取り集を<wbr>無料で受け取る <span aria-hidden="true">→</span></a>
  </div>
 </section>
-<p class="hero-impact-figcaption">福岡ビルド 施工実例（二丈上深江）／施工実例集より</p>
+
 <!-- ▼▼▼ 追加：施工事例×価格帯セクション（v2たたき台・20260925・本番未反映） ▼▼▼ -->
 <section class="price-cases" id="price-cases" aria-labelledby="price-cases-title">
  <div class="price-cases-head">
@@ -506,6 +520,27 @@ p{ text-wrap:pretty; }
     $('#ct-name').focus();
   });
   $('#ct-submit').disabled = false;
+})();
+</script>
+
+<script>
+(() => {
+  const cards = document.querySelectorAll('.lp-style-card');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduced.matches || !('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.remove('lp-reveal-pending');
+      observer.unobserve(entry.target);
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+  cards.forEach(card => {card.classList.add('lp-reveal-pending'); observer.observe(card);});
+  reduced.addEventListener('change', event => {
+    if (!event.matches) return;
+    observer.disconnect();
+    cards.forEach(card => card.classList.remove('lp-reveal-pending'));
+  });
 })();
 </script>
 </body>
