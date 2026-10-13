@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>3連休広告 結果レポート</title>
+<style>
+  :root {
+    --surface-1: #fcfcfb; --surface-2: #f2f1ee; --surface-3: #e9e8e3;
+    --text-primary: #0b0b0b; --text-secondary: #52514e; --text-muted: #85837c;
+    --border: #d8d7d2; --series-1: #2a78d6; --series-1-bg: #e8f1fc;
+    --muted-bar: #b9b7b0; --good: #1f7a4d; --good-bg: #e6f4ec;
+    --critical: #d03b3b; --critical-bg: #fbe9e9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --surface-1: #161615; --surface-2: #1f1f1d; --surface-3: #2a2a27;
+      --text-primary: #f2f1ee; --text-secondary: #bdbbb4; --text-muted: #8c8a83;
+      --border: #3a3935; --series-1: #5b9be6; --series-1-bg: #1b2b3f;
+      --muted-bar: #5a5853; --good: #4fbf86; --good-bg: #17301f;
+      --critical: #ec6b6b; --critical-bg: #3a1c1c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --surface-1: #161615; --surface-2: #1f1f1d; --surface-3: #2a2a27;
+    --text-primary: #f2f1ee; --text-secondary: #bdbbb4; --text-muted: #8c8a83;
+    --border: #3a3935; --series-1: #5b9be6; --series-1-bg: #1b2b3f;
+    --muted-bar: #5a5853; --good: #4fbf86; --good-bg: #17301f;
+    --critical: #ec6b6b; --critical-bg: #3a1c1c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--surface-1); color: var(--text-primary);
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    line-height: 1.8; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 24px; line-height: 1.5; margin: 0 0 6px; }
+  .subtitle { color: var(--text-secondary); font-size: 13px; margin: 0 0 28px; }
+  h2 { font-size: 18px; margin: 44px 0 6px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .lead { color: var(--text-secondary); font-size: 13.5px; margin: 0 0 16px; }
+
+  .conclusion { background: var(--surface-2); border: 2px solid var(--series-1); border-radius: 10px; padding: 18px 20px; }
+  .conclusion-title { font-size: 13px; font-weight: 700; color: var(--series-1); margin-bottom: 10px; }
+  .conclusion ol { margin: 0; padding-left: 1.3em; }
+  .conclusion li { margin: 6px 0; font-size: 15px; }
+
+  .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 18px 0 4px; }
+  .card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .card .label { font-size: 12px; color: var(--text-secondary); }
+  .card .value { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .card .note { font-size: 11.5px; color: var(--text-muted); }
+  .card.hl { border-color: var(--good); background: var(--good-bg); }
+  .card.hl .value { color: var(--good); }
+  @media (max-width: 640px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 520px; }
+  th, td { padding: 9px 10px; border-bottom: 1px solid var(--border); text-align: right; font-variant-numeric: tabular-nums; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { font-size: 12px; color: var(--text-secondary); font-weight: 600; background: var(--surface-2); }
+  td.good { color: var(--good); font-weight: 700; }
+  tr.total td { font-weight: 700; background: var(--surface-2); }
+
+  .bars { display: grid; gap: 14px; margin-top: 10px; }
+  .bar-row .bar-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; gap: 8px; }
+  .bar-row .bar-label span:last-child { color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+  .bar-track { display: grid; gap: 3px; }
+  .bar { height: 14px; border-radius: 0 4px 4px 0; min-width: 2px; }
+  .bar.prev { background: var(--muted-bar); }
+  .bar.now { background: var(--series-1); }
+  .legend { display: flex; gap: 16px; font-size: 12px; color: var(--text-secondary); margin-top: 6px; flex-wrap: wrap; }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 5px; }
+
+  .note-box { background: var(--surface-2); border-radius: 8px; padding: 14px 16px; font-size: 13.5px; color: var(--text-secondary); margin-top: 14px; }
+  .note-box strong { color: var(--text-primary); }
+  .next { counter-reset: n; list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 10px; }
+  .next li { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px 12px 46px; position: relative; font-size: 14px; }
+  .next li::before { counter-increment: n; content: counter(n); position: absolute; left: 14px; top: 12px; width: 22px; height: 22px; border-radius: 50%; background: var(--series-1); color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; }
+  .next li strong { display: block; margin-bottom: 2px; }
+  .links { display: grid; gap: 8px; margin-top: 10px; }
+  .links a { color: var(--series-1); font-size: 14px; }
+  .foot { margin-top: 40px; font-size: 12px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>3連休（スポーツの日）広告 結果レポート</h1>
+  <p class="subtitle">配信期間：2026年10月10日（土）〜12日（月・祝）／FB HOME 資料請求広告（Instagram）</p>
+
+  <div class="conclusion">
+    <div class="conclusion-title">結論</div>
+    <ol>
+      <li><strong>資料請求が1件入りました。</strong>前回のシルバーウィークは0件でした。1件あたりの広告費は5,864円です。</li>
+      <li><strong>反応が良かったのは「ストーリーズ」と、35〜64歳の女性です。</strong>資料請求の1件もストーリーズからでした。</li>
+      <li><strong>次の課題は、ページを読んでもらう時間です。</strong>多くの方が最後までスクロールしていますが、1人あたり平均17秒ほどで、価格つきの実例で立ち止まるところまではいっていません。</li>
+    </ol>
+  </div>
+
+  <div class="cards">
+    <div class="card hl"><div class="label">資料請求</div><div class="value">1件</div><div class="note">前回 0件</div></div>
+    <div class="card"><div class="label">広告費</div><div class="value">5,864円</div><div class="note">予算6,000円</div></div>
+    <div class="card"><div class="label">広告がクリックされた数</div><div class="value">53回</div><div class="note">1回あたり111円</div></div>
+    <div class="card"><div class="label">広告が見られた人数</div><div class="value">1,723人</div><div class="note">表示は2,428回</div></div>
+  </div>
+
+  <h2>前回（シルバーウィーク）との比較</h2>
+  <p class="lead">今回は、前回から3つを変えて配信しました。①広告の目標を「クリック」から「資料請求」に変更、②資料請求ページに価格つきの施工実例3件を追加、③新しい15秒動画。</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>項目</th><th>前回（9/19〜23）</th><th>今回（10/10〜12）</th></tr></thead>
+    <tbody>
+      <tr><td>広告の目標</td><td>クリックを集める</td><td>資料請求を集める</td></tr>
+      <tr><td>広告費</td><td>7,994円</td><td>5,864円</td></tr>
+      <tr><td>広告がクリックされた数</td><td>425回</td><td>53回</td></tr>
+      <tr><td>1クリックあたりの費用</td><td>約19円</td><td>約111円</td></tr>
+      <tr><td>資料請求ページに来た人</td><td>459</td><td>56</td></tr>
+      <tr><td>ページの平均スクロール</td><td>34%</td><td class="good">77%</td></tr>
+      <tr><td>フォームまでたどり着いた割合</td><td>20%</td><td class="good">83%</td></tr>
+      <tr><td>ページを見ていた時間（平均）</td><td>16秒</td><td>17秒</td></tr>
+      <tr><td>資料請求</td><td>0件</td><td class="good">1件</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note-box">
+    前回は1クリックの費用が安く、たくさんの人が来ましたが、資料請求にはつながりませんでした。
+    今回は「資料請求しそうな人」を狙って配信したため、1クリックの費用は上がり人数は減りましたが、
+    ページを下まで見る人が増え、資料請求が1件入りました。<strong>人数より「来る人の質」が上がった</strong>結果です。
+  </div>
+
+  <h2>3日間の日別の結果</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>日付</th><th>広告費</th><th>見られた人数</th><th>クリック</th><th>1クリックの費用</th><th>資料請求</th></tr></thead>
+    <tbody>
+      <tr><td>10/10（土）</td><td>2,177円</td><td>828</td><td>19</td><td>115円</td><td class="good">1件</td></tr>
+      <tr><td>10/11（日）</td><td>1,453円</td><td>379</td><td>11</td><td>132円</td><td>0件</td></tr>
+      <tr><td>10/12（月・祝）</td><td>2,234円</td><td>733</td><td>23</td><td>97円</td><td>0件</td></tr>
+      <tr class="total"><td>合計</td><td>5,864円</td><td>1,723</td><td>53</td><td>111円</td><td>1件</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note-box">
+    10/11は広告費が少なめでした。今回の設定では、Instagram側が「資料請求しそうな人」が見つかりにくい日は配信を控えるためです。
+    その分は10/12に回り、3日間で予算6,000円をほぼ使い切りました。
+    動画は612回再生され、そのうち91回は最後（15秒）まで見られています。
+  </div>
+
+  <h2>どこで反応があったか</h2>
+  <p class="lead">Instagramの中の表示場所ごとの結果です。</p>
+  <div class="bars" role="img" aria-label="表示場所別のクリック数。ストーリーズ28回、フィード19回、リール6回">
+    <div class="bar-row"><div class="bar-label"><span>ストーリーズ（資料請求 1件）</span><span>クリック28回／2,619円</span></div><div class="bar now" style="width:100%"></div></div>
+    <div class="bar-row"><div class="bar-label"><span>フィード</span><span>クリック19回／2,586円</span></div><div class="bar now" style="width:67.9%"></div></div>
+    <div class="bar-row"><div class="bar-label"><span>リール</span><span>クリック6回／659円</span></div><div class="bar now" style="width:21.4%"></div></div>
+  </div>
+  <div class="note-box">
+    ストーリーズはフィードとほぼ同じ広告費で、1.5倍のクリックがありました。<br>
+    見た人の中心は女性35〜64歳（多い順に45〜54歳、35〜44歳、55〜64歳）で、資料請求の1件は女性55〜64歳、夜21時台でした。
+    広告が多く表示されたのは朝6〜9時と夜21〜22時です。
+  </div>
+
+  <h2>資料請求ページの見られ方</h2>
+  <p class="lead">ページのどこまで見られたか（スマートフォン）。前回はグレー、今回は青です。</p>
+  <div class="bars" role="img" aria-label="ページの到達率の比較">
+    <div class="bar-row"><div class="bar-label"><span>ページの上から1割</span><span>前回 44% → 今回 83%</span></div>
+      <div class="bar-track"><div class="bar prev" style="width:44%"></div><div class="bar now" style="width:83%"></div></div></div>
+    <div class="bar-row"><div class="bar-label"><span>ページの真ん中</span><span>前回 29% → 今回 83%</span></div>
+      <div class="bar-track"><div class="bar prev" style="width:29%"></div><div class="bar now" style="width:83%"></div></div></div>
+    <div class="bar-row"><div class="bar-label"><span>資料請求フォーム</span><span>前回 20% → 今回 83%</span></div>
+      <div class="bar-track"><div class="bar prev" style="width:20%"></div><div class="bar now" style="width:83%"></div></div></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--muted-bar)"></i>前回（9/19〜23）</span><span><i style="background:var(--series-1)"></i>今回（10/10〜12）</span></div>
+  <div class="note-box">
+    今回は8割以上の方がフォームまでスクロールしています。一方で、ページを見ている時間は平均17秒で、前回とほとんど変わっていません。
+    <strong>指で一気に最後まで流して、そのまま閉じている方が多い</strong>と考えられます。
+    価格つきの実例のところで立ち止まってもらうことが、次の伸びしろです。
+  </div>
+
+  <h2>次回に向けて</h2>
+  <ol class="next">
+    <li><strong>ストーリーズを中心に配信する</strong>反応が一番良かった場所です。ストーリーズは縦長の全画面なので、縦型（9:16）の動画を用意すると、より見やすくなります。</li>
+    <li><strong>価格つきの実例で立ち止まってもらう</strong>たとえば実例の上に「この家、いくらだと思いますか？」のような問いかけを置く、ページを短くして実例とフォームを近づける、などを試します。</li>
+    <li><strong>フォームの入力をさらに迷わせない</strong>未入力のまま送信ボタンを押してしまった方がいました。入力が必要な欄が一目で分かるようにします。</li>
+    <li><strong>配信期間を長めにとる</strong>3日間・6,000円は、1件取れるかどうかの規模です。件数を増やすには、同じ予算でも7日以上続けると、Instagram側が「資料請求しそうな人」を探しやすくなります。</li>
+  </ol>
+
+  <h2>関連資料</h2>
+  <div class="links">
+    <a href="../2609-sw-catalog-sample/">前回（シルバーウィーク）の結果レポート</a>
+    <a href="../2609-catalog-mockup/">資料請求ページの改善イメージ</a>
+  </div>
+
+  <p class="foot">
+    数値の出どころ：Meta広告マネージャー（最終値）、Googleアナリティクス4、Microsoft Clarity。いずれも加工・補正はしていません。
+    「資料請求ページに来た人」はGoogleアナリティクス4の広告経由の訪問数です。社内テストの送信は除いています。
+  </p>
+</div>
+</body>
+</html>
