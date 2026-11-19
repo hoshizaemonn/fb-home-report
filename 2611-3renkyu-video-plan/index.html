@@ -4,169 +4,171 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>FB HOME 3連休の動画広告（ご感想と試作3案）</title>
+<title>FB HOME 3連休の広告 配信プラン（11/21〜23）</title>
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#1c2733;--sub:#5b6b7b;--line:#e3e8ee;--navy:#0a3f80;--blue:#1a66b8;--ok:#1f8a5b;--warn:#c27a00;--soft:#eef4fb}
-@media (prefers-color-scheme:dark){:root{--bg:#10151b;--card:#18202a;--ink:#e8edf3;--sub:#9aa9b8;--line:#2a3542;--navy:#7fb2ee;--blue:#6aa6e8;--ok:#4cc38a;--warn:#e0a63a;--soft:#1c2937}}
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1c2733;--sub:#5b6b7b;--line:#e3e8ee;--navy:#0a3f80;--blue:#1a66b8;--soft:#eef4fb;--a:#1a66b8;--b:#e08a00;--ok:#1f8a5b;--warn:#c27a00}
+@media (prefers-color-scheme:dark){:root{--bg:#10151b;--card:#18202a;--ink:#e8edf3;--sub:#9aa9b8;--line:#2a3542;--navy:#7fb2ee;--blue:#6aa6e8;--soft:#1c2937;--a:#6aa6e8;--b:#f0a63a;--ok:#4cc38a;--warn:#e0a63a}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.8 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif}
-.wrap{max-width:900px;margin:0 auto;padding:24px 16px 64px}
+.wrap{max-width:920px;margin:0 auto;padding:24px 16px 64px}
 h1{font-size:22px;line-height:1.5;margin:0 0 4px;color:var(--navy)}
 .sub{color:var(--sub);font-size:13px;margin:0 0 20px}
 h2{font-size:17.5px;margin:38px 0 12px;color:var(--navy);border-left:4px solid var(--blue);padding-left:10px}
-h3{font-size:15.5px;margin:18px 0 6px;color:var(--navy)}
+h3{font-size:15.5px;margin:0 0 6px;color:var(--navy)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
-.top3 ol{margin:8px 0 0;padding-left:22px}
-.top3 li{margin:8px 0}
 b{color:var(--navy)}
-ul{padding-left:20px;margin:6px 0}
-li{margin:4px 0}
+ul{padding-left:20px;margin:6px 0}li{margin:4px 0}
+.note{font-size:13px;color:var(--sub)}
+.top3 ol{margin:8px 0 0;padding-left:22px}.top3 li{margin:8px 0}
+
+/* 流れの図 */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;justify-content:center}
+.fs{flex:1 1 150px;min-width:140px;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 10px;text-align:center;font-size:13.5px;line-height:1.6}
+.fs .n{display:inline-block;width:24px;height:24px;line-height:24px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:13px;margin-bottom:4px}
+.fs b{display:block;font-size:14.5px}
+.ar{display:flex;align-items:center;justify-content:center;width:26px;color:var(--sub);font-size:20px}
+@media (max-width:700px){.flow{flex-direction:column;align-items:stretch}.ar{width:auto;height:26px;transform:rotate(90deg)}.fs{flex:none}}
+
+/* 予算の図 */
+.bud{margin:10px 0}
+.bud .row{display:grid;grid-template-columns:96px 1fr 120px;gap:10px;align-items:center;margin:10px 0;font-size:14px}
+.bud .t{height:34px;background:var(--line);border-radius:6px;overflow:hidden}
+.bud .t i{display:block;height:100%}
+.bud .row.a .t i{width:66.7%;background:var(--a)}
+.bud .row.b .t i{width:33.3%;background:var(--b)}
+.bud .v{text-align:right;font-weight:700;color:var(--navy)}
+.bud .tot{display:flex;justify-content:space-between;border-top:1px dashed var(--line);margin-top:14px;padding-top:10px;font-size:14px}
+@media (max-width:520px){.bud .row{grid-template-columns:70px 1fr 96px;font-size:12.5px}}
+
+/* 期間 */
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}
+.day{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center;font-size:13.5px}
+.day b{display:block;font-size:15.5px}
+.day span{display:block;color:var(--sub);font-size:12.5px}
+
+/* 構造図 */
+.tree{font-size:13.5px}
+.tree .c{background:var(--navy);color:#fff;border-radius:8px;padding:8px 12px;text-align:center;font-weight:700}
+.tree .kids{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;position:relative}
+.tree .kids::before{content:"";position:absolute;left:25%;right:25%;top:-8px;border-top:2px solid var(--line)}
+.tree .k{background:var(--card);border:2px solid var(--line);border-radius:8px;padding:10px 12px}
+.tree .k.a{border-color:var(--a)}.tree .k.b{border-color:var(--b)}
+.tree .k b{display:block;margin-bottom:2px}
+@media (max-width:560px){.tree .kids{grid-template-columns:1fr}.tree .kids::before{display:none}}
+
+/* 動画 */
+.vids{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:14px 0}
+.vid{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column}
+.vid video{width:100%;aspect-ratio:9/16;border-radius:8px;background:#000;display:block}
+.vid .tag{display:inline-block;align-self:flex-start;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;color:#fff;margin-top:10px}
+.vid.a .tag{background:var(--a)}.vid.b .tag{background:var(--b)}
+.vid .ttl{font-size:16px;font-weight:700;color:var(--navy);line-height:1.5;margin-top:4px}
+.vid p{font-size:13.5px;margin:6px 0 0;line-height:1.75}
+@media (max-width:640px){.vids{grid-template-columns:1fr}.vid video{max-width:340px;margin:0 auto}}
+
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 th{color:var(--sub);font-weight:600;font-size:13px;white-space:nowrap}
 .scroll{overflow-x:auto}
-.note{font-size:13px;color:var(--sub)}
-.fix{counter-reset:n;list-style:none;padding:0;margin:8px 0}
-.fix li{counter-increment:n;position:relative;padding:12px 14px 12px 50px;margin:10px 0;background:var(--soft);border-radius:10px}
-.fix li::before{content:counter(n);position:absolute;left:14px;top:13px;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
-.fix .how{display:block;font-size:14px;color:var(--ink);margin-top:2px}
-.vids{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:14px 0}
-.vid{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column}
-.vid video{width:100%;aspect-ratio:9/16;border-radius:8px;background:#000;display:block}
-.vid .no{font-size:12.5px;color:var(--blue);font-weight:700;margin-top:10px}
-.vid .ttl{font-size:16px;font-weight:700;color:var(--navy);line-height:1.5}
-.vid p{font-size:13.5px;margin:6px 0 0;line-height:1.75}
-.badge{display:inline-block;font-size:12px;padding:1px 9px;border-radius:99px;border:1px solid var(--line);color:var(--sub);margin-top:8px;align-self:flex-start}
-.badge.ok{color:var(--ok);border-color:var(--ok)}
-.badge.warn{color:var(--warn);border-color:var(--warn)}
 .caution{border-left:4px solid var(--warn)}
-.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.cmp .card{margin:0}
-.cmp dl{margin:8px 0 0}
-.cmp dt{font-size:12.5px;color:var(--sub);margin-top:8px}
-.cmp dd{margin:0;font-size:14px}
-@media (max-width:720px){.vids{grid-template-columns:1fr}.vid video{max-width:340px;margin:0 auto}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<h1>FB HOME 3連休の動画広告<br>ご感想と、試作した3つの案</h1>
-<p class="sub">配信予定：11/21（土）〜23（月・祝）／Instagram広告｜2026年11月18日 株式会社斗</p>
+<h1>FB HOME 3連休の広告<br>配信プラン（11/21〜23）</h1>
+<p class="sub">Instagram広告／目的：資料請求／2026年11月20日 株式会社斗</p>
 
 <div class="card top3">
 <b>まとめ</b>
 <ol>
-<li><b>中野様の「イメージ重視」の動画は、世界観がよく伝わります。</b>西海岸らしさが全場面でそろっていて、言葉の流れもきれいです。</li>
-<li><b>直すなら、3か所だけです。</b>①冒頭を1〜2秒つめる ②最後の画面に3連休の案内を入れる ③中ほどの文字を読みやすくする。</li>
-<li><b>別の切り口の案を、3つ試作しました。</b>下で動画をご覧いただけます。イメージ確認用の粗い試作です。気になる案があれば、本番用に作り込みます。</li>
+<li><b>動画は2本を、同時に流して比べます。</b>A＝中野様の動画（カタログの帯を重ねた版）、B＝家が次々に変わる動画（資料請求版）。</li>
+<li><b>予算は、1日3,300円を、A：2,200円／B：1,100円に分けます。</b>3日間で合計9,900円。実績のあるAを多めにして、Bで新しい形を試します。</li>
+<li><b>どちらも、最後は資料請求に案内します。</b>広告の下の「詳しくはこちら」から、資料請求のページ（fb-home.jp）へ進みます。</li>
 </ol>
 </div>
 
-<h2>1. 中野様の動画について</h2>
-
+<h2>1. お客様の流れ</h2>
 <div class="card">
-<h3 style="margin-top:0">良いと感じた点</h3>
-<ul>
-<li>白黒の海が、ぱっと色づく出だしは、目を引きます。</li>
-<li>海、ヤシ、青い窓枠、サーフボードと、西海岸の世界観が全場面でそろっています。「どんな家の会社か」が、絵で伝わります。</li>
-<li>言葉が短く、最後の「そんな家を一緒につくろう」まで、流れがきれいです。誤字もありませんでした。</li>
+<div class="flow">
+  <div class="fs"><span class="n">1</span><b>広告を見る</b>Instagramで、動画が流れます</div>
+  <div class="ar">▶</div>
+  <div class="fs"><span class="n">2</span><b>「詳しくはこちら」</b>広告の下のボタンを押します</div>
+  <div class="ar">▶</div>
+  <div class="fs"><span class="n">3</span><b>資料請求のページ</b>fb-home.jp で、名前などを入力します</div>
+  <div class="ar">▶</div>
+  <div class="fs"><span class="n">4</span><b>プレゼントが届く</b>施工実例集と、間取り集です</div>
+</div>
+<p class="note" style="margin:10px 0 0">広告のリンク先は、前回と同じ fb-home.jp（資料請求のページ）です。動画ごとに、リンクの末尾に目印を付けます。どちらの動画から資料請求が来たか、あとで分かります。</p>
+</div>
+
+<h2>2. 予算の分け方</h2>
+<div class="card">
+<div class="bud">
+  <div class="row a"><span>A 中野様の動画</span><div class="t"><i></i></div><span class="v">2,200円／日</span></div>
+  <div class="row b"><span>B 家が変わる動画</span><div class="t"><i></i></div><span class="v">1,100円／日</span></div>
+  <div class="tot"><span>1日の合計</span><b>3,300円</b></div>
+  <div class="tot" style="border-top:0;margin-top:0;padding-top:4px"><span>3日間の合計</span><b>9,900円</b></div>
+</div>
+<p class="note" style="margin:10px 0 0">Aを2、Bを1の割合にしています。過去の配信では、中野様の動画の系統の反応が良かったためです。Bは、今回が初めての配信なので、まずは少なめで試します。</p>
+</div>
+
+<div class="days">
+  <div class="day"><b>11/21（土）</b><span>0:00〜</span>3,300円</div>
+  <div class="day"><b>11/22（日）</b><span>終日</span>3,300円</div>
+  <div class="day"><b>11/23（月・祝）</b><span>〜23:59</span>3,300円</div>
+</div>
+
+<h2>3. 広告の設定のしくみ</h2>
+<div class="card">
+<div class="tree">
+  <div class="c">キャンペーン　FBHOME_3連休_資料請求</div>
+  <div class="kids">
+    <div class="k a"><b>広告セットA（1日2,200円）</b>動画：中野様の動画（カタログの帯つき）</div>
+    <div class="k b"><b>広告セットB（1日1,100円）</b>動画：家が変わる動画</div>
+  </div>
+</div>
+<ul style="margin-top:14px">
+<li>広告セットを2つに分けると、予算の割り振りを、こちらで決められます。</li>
+<li>配信先（地域・年齢・Instagramのみ）は、2つとも同じです。違いは、動画だけです。</li>
+<li>広告のボタンは、「詳しくはこちら」にします。</li>
 </ul>
 </div>
 
-<div class="card">
-<h3 style="margin-top:0">離脱について</h3>
-<p style="margin:0">工夫されている点は、伝わってきます。ただ、最初の3秒は、海と「FB HOME Presents」の文字だけです。家の外観が出るのは、5秒を少し過ぎてからでした。初めて見る人には、旅行の広告にも見えそうです。<br>
-これまでの配信でも、冒頭で足を止めてもらえるかどうかが、数字に出やすい傾向がありました。</p>
-</div>
-
-<div class="card">
-<h3 style="margin-top:0">今の動画を生かしたまま、直したい3か所</h3>
-<ol class="fix">
-<li><b>冒頭を1〜2秒つめる</b>
-<span class="how">「Presents」を外し、白黒の海を1秒ほどにして、色づくところと家の外観を、3秒までに出します。<br>または、海の場面に「福岡｜カリフォルニアスタイルの家」と大きく重ねるだけでも、何の広告かが伝わります。</span></li>
-<li><b>最後の画面に、3連休の案内を入れる</b>
-<span class="how">今は「詳しくはリンクをチェック」だけで、表示も約2秒です。「11/21〜23」や「3連休」の言葉と、してほしい行動（見学、資料請求など）を入れて、3秒ほど出すのがおすすめです。</span></li>
-<li><b>中ほどの文字を読みやすくする</b>
-<span class="how">白い壁に白い文字が重なって、読みにくい場面があります（特に「ぜいたくな時間」）。文字の後ろに、薄い影か帯を入れると読みやすくなります。<br>あわせて、「California style」の「style」を少し上に上げてください。Instagramの画面下のボタンと重なる位置にあります。</span></li>
-</ol>
-</div>
-
-<div class="card">
-<h3 style="margin-top:0">動画の流れ（確認したもの）</h3>
-<div class="scroll">
-<table>
-<tr><th>秒</th><th>映像</th><th>文字</th></tr>
-<tr><td>0〜3</td><td>白黒の砂浜と海</td><td>FB HOME / Presents</td></tr>
-<tr><td>3〜5</td><td>同じ海がカラーに変わる</td><td>人生を楽しみつくす家</td></tr>
-<tr><td>5〜18</td><td>外観、階段、外観、テラス、リビング、外観（各約2秒）</td><td>California style／ゆったり流れる／ぜいたくな時間／休日はもちろん／何気ない毎日を特別に／そんな家を一緒につくろう</td></tr>
-<tr><td>18.5〜20.6</td><td>黒い画面</td><td>FB HOME／Fukuoka／カリフォルニアスタイル建築／詳しくはリンクをチェック</td></tr>
-</table>
-</div>
-</div>
-
-<h2>2. こちらで試作した3つの案</h2>
-<p class="note">再生ボタンを押すと、動画が流れます（どれも約18秒・音なし）。<br>
-イメージを確認するための粗い試作です。家の絵は、AIやCGで作った仮のもので、実際の建物とは細かい点が異なります。</p>
-
+<h2>4. 使う動画（2本）</h2>
 <div class="vids">
-  <div class="vid">
-    <video controls playsinline muted preload="metadata" poster="video/plan1.jpg"><source src="video/plan1.mp4" type="video/mp4"></video>
-    <div class="no">案1</div>
-    <div class="ttl">家が次々に変わる</div>
-    <p>同じ土地で、6つのスタイルの家が、次々に切り替わります。「あなたはどの家に住みたい？」と問いかけて、見る人に選んでもらう形です。</p>
-    <span class="badge ok">3連休に間に合う見込み</span>
+  <div class="vid a">
+    <video controls playsinline muted preload="metadata" poster="video/a_nakano.jpg"><source src="video/a_nakano.mp4" type="video/mp4"></video>
+    <span class="tag">A　1日2,200円</span>
+    <div class="ttl">中野様の動画（カタログの帯つき）</div>
+    <p>中野様の動画に、「施工実例集 無料プレゼント」の白い帯を、画面の上に重ねました。動画の中身は、変えていません。帯は、最初の海の場面と、最後の画面を除いて、ずっと出ます。</p>
   </div>
-  <div class="vid">
-    <video controls playsinline muted preload="metadata" poster="video/plan2.jpg"><source src="video/plan2.mp4" type="video/mp4"></video>
-    <div class="no">案2</div>
-    <div class="ttl">間取り図から、家が建ち上がる</div>
-    <p>二丈上深江の間取り図から、立体の模型になり、西海岸スタイルの外観になります。「この間取り、どんな家になる？」が出だしです。</p>
-    <span class="badge ok">急げば間に合う見込み</span>
-  </div>
-  <div class="vid">
-    <video controls playsinline muted preload="metadata" poster="video/plan3.jpg"><source src="video/plan3.mp4" type="video/mp4"></video>
-    <div class="no">案3</div>
-    <div class="ttl">糸島を、空からぐるっと回って見る</div>
-    <p>実際の地形と航空写真を使い、海と山が見える高さから、家へ寄っていきます。「ここに住む自分」を想像してもらう形です。</p>
-    <span class="badge warn">次回以降がおすすめ</span>
+  <div class="vid b">
+    <video controls playsinline muted preload="metadata" poster="video/b_plan1.jpg"><source src="video/b_plan1.mp4" type="video/mp4"></video>
+    <span class="tag">B　1日1,100円</span>
+    <div class="ttl">家が次々に変わる動画（資料請求版）</div>
+    <p>同じ土地に、6つのスタイルの家が、下から次々に立ち上がります。最後に、実際に建てた家と、実例集の表紙を見せて、「下の『詳しくはこちら』から」と案内します。BGMつきです。</p>
   </div>
 </div>
+<p class="note">このページの動画は、見やすいように軽くしてあります（画質は、実際の広告より少し落ちます）。音が出ます。<br>
+Bの家の絵は、AIで作った「完成イメージ」です。動画の中にも、そう表示しています。</p>
 
-<div class="card caution">
-<b>試作についてのお断り</b>
+<h2>5. 見込みと、結果のご報告</h2>
+<div class="card">
 <ul>
-<li>最後の「3連休、実物を見に来ませんか」「見学できます」は、仮の言葉です。実際のご案内に合わせて差し替えます。</li>
-<li>案1と案2の最後の写真は、手元にあった玄関まわりの写真です。本番では、家の全景の写真に差し替えたいと考えています。</li>
-<li>案3は、家を置いた位置と建物の形が仮のものです。動画の中にも、その旨を入れています。</li>
-<li>本番では、動きをなめらかにして、BGMを入れます。</li>
+<li>クリックは、2本あわせて、<b>約45〜90件</b>の見込みです（過去の配信の実績からの計算です。保証ではありません）。</li>
+<li>資料請求は、0〜2件くらいと見ています。</li>
+<li>予算が小さいので、AとBの差が出ても、偶然の範囲かもしれません。今回は、<b>大まかな傾向をつかむこと</b>が目的です。</li>
+<li>配信が終わったら（11/24以降）、結果を図にして、ご報告します。</li>
 </ul>
 </div>
 
-<h2>3. 3つの案の比べ</h2>
-<div class="cmp">
-  <div class="card"><b>案1 家が変わる</b>
-    <dl><dt>ねらい</dt><dd>「どれがいい？」と選びたくなる</dd>
-    <dt>3連休に間に合うか</dt><dd>間に合う見込み</dd>
-    <dt>本番に必要なもの</dt><dd>家の全景の写真</dd></dl></div>
-  <div class="card"><b>案2 間取りから家</b>
-    <dl><dt>ねらい</dt><dd>間取りから完成までを一気に見せる</dd>
-    <dt>3連休に間に合うか</dt><dd>急げば間に合う見込み</dd>
-    <dt>本番に必要なもの</dt><dd>家の全景の写真</dd></dl></div>
-  <div class="card"><b>案3 糸島を空から</b>
-    <dl><dt>ねらい</dt><dd>土地の広がりと、住む場所を見せる</dd>
-    <dt>3連休に間に合うか</dt><dd>難しい（素材集めから）</dd>
-    <dt>本番に必要なもの</dt><dd>区画の正確な位置、四方からの外観写真（あればドローン映像）</dd></dl></div>
-</div>
-
-<h2>4. 教えていただきたいこと</h2>
-<div class="card">
+<h2>6. 確認していただきたいこと</h2>
+<div class="card caution">
 <ul>
-<li>3連休に、見学できる家やイベントはありますか。あれば、最後の案内をそれに合わせます。</li>
-<li>広告のリンク先は、前回と同じ fb-home.jp でよいでしょうか。</li>
-<li>ご予算は、前回と同じ4,000円でしょうか。</li>
-<li>配信する動画は、中野様の動画1本にしますか。こちらの案と2本を同時に流して、比べることもできます。</li>
-<li>気になる案がありましたら、家の全景の写真（縦向き、高画質、人が写っていないもの）をいただけると助かります。</li>
+<li>動画2本（AとB）で、配信してよいでしょうか。</li>
+<li>予算の分け方（A：2,200円、B：1,100円）で、よいでしょうか。</li>
+<li>広告のボタンは、「詳しくはこちら」でよいでしょうか。</li>
 </ul>
 </div>
 
