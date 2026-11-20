@@ -57,14 +57,15 @@ ul{padding-left:20px;margin:6px 0}li{margin:4px 0}
 @media (max-width:560px){.tree .kids{grid-template-columns:1fr}.tree .kids::before{display:none}}
 
 /* 動画 */
-.vids{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:14px 0}
+.vids{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:14px 0;align-items:start}
 .vid{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column}
 .vid video{width:100%;aspect-ratio:9/16;border-radius:8px;background:#000;display:block}
+.vid.feed video{aspect-ratio:4/5}
 .vid .tag{display:inline-block;align-self:flex-start;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;color:#fff;margin-top:10px}
 .vid.a .tag{background:var(--a)}.vid.b .tag{background:var(--b)}
 .vid .ttl{font-size:16px;font-weight:700;color:var(--navy);line-height:1.5;margin-top:4px}
 .vid p{font-size:13.5px;margin:6px 0 0;line-height:1.75}
-@media (max-width:640px){.vids{grid-template-columns:1fr}.vid video{max-width:340px;margin:0 auto}}
+@media (max-width:760px){.vids{grid-template-columns:1fr}.vid video{max-width:340px;margin:0 auto}}
 
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
@@ -135,23 +136,29 @@ th{color:var(--sub);font-weight:600;font-size:13px;white-space:nowrap}
 </ul>
 </div>
 
-<h2>4. 使う動画（2本）</h2>
+<h2>4. 使う動画（A：2つの版、B）</h2>
 <div class="vids">
   <div class="vid a">
     <video controls playsinline muted preload="metadata" poster="video/a_nakano.jpg"><source src="video/a_nakano.mp4" type="video/mp4"></video>
     <span class="tag">A　1日2,200円</span>
-    <div class="ttl">中野様の動画（カタログの帯つき）</div>
-    <p>中野様の動画に、「施工実例集 無料プレゼント」の白い帯を、画面の上に重ねました。動画の中身は、変えていません。帯は、最初の海の場面と、最後の画面を除いて、ずっと出ます。</p>
+    <div class="ttl">中野様の動画（カタログの帯つき）<br><small style="font-weight:400;color:var(--sub)">ストーリーズ・リール用（縦長 9:16）</small></div>
+    <p>中野様の動画に、「施工実例集 無料プレゼント」の白い帯を、画面の上に重ねました。ご指示のとおり、帯を、画面のできるだけ上に上げています。動画の中身は、変えていません。帯は、最初の海の場面と、最後の画面を除いて、ずっと出ます。</p>
+  </div>
+  <div class="vid a feed">
+    <video controls playsinline muted preload="metadata" poster="video/a_nakano_4x5.jpg"><source src="video/a_nakano_4x5.mp4" type="video/mp4"></video>
+    <span class="tag">A　（同じ広告）</span>
+    <div class="ttl">中野様の動画<br><small style="font-weight:400;color:var(--sub)">フィード用（4:5）</small></div>
+    <p>フィードでは、縦長の動画は、上下が切り取られます。そのため、フィードだけ、4:5に切り出して、帯が画面の一番上に出る版を用意しました。Aの広告に、配置ごとに、使い分けます。</p>
   </div>
   <div class="vid b">
     <video controls playsinline muted preload="metadata" poster="video/b_plan1.jpg"><source src="video/b_plan1.mp4" type="video/mp4"></video>
     <span class="tag">B　1日1,100円</span>
     <div class="ttl">家が次々に変わる動画（資料請求版）</div>
-    <p>同じ土地に、6つのスタイルの家が、下から次々に立ち上がります。最後に、実際に建てた家と、実例集の表紙を見せて、「下の『詳しくはこちら』から」と案内します。BGMつきです。</p>
+    <p>同じ土地に、6つのスタイルの家が、次々に変わります（最初の家だけ、下から出ます）。最後に、実際に建てた家と、実例集の表紙を見せて、「資料請求は、下の『詳しくはこちら』から」と、矢印で案内します。BGMつきです。</p>
   </div>
 </div>
 <p class="note">このページの動画は、見やすいように軽くしてあります（画質は、実際の広告より少し落ちます）。音が出ます。<br>
-Bの家の絵は、AIで作った「完成イメージ」です。動画の中にも、そう表示しています。</p>
+Bの家の絵は、AIで作った「完成イメージ」です。動画の中にも、「※完成イメージ」と表示しています。</p>
 
 <h2>5. 見込みと、結果のご報告</h2>
 <div class="card">
